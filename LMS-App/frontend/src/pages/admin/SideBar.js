@@ -17,7 +17,7 @@ const SideBar = () => {
     return (
         <>
             <React.Fragment>
-                <ListItemButton>
+                <ListItemButton component={Link} to="/">
                     <ListItemIcon>
                         <HomeIcon  />
                     </ListItemIcon>

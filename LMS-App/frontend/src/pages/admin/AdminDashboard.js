@@ -92,6 +92,7 @@ const AdminDashboard = () => {
                 <Box component="main" sx={styles.boxStyled}>
                     <Toolbar />
                     <Routes>
+                        {/* //Admin */}
                         <Route path="/" element={<AdminHomePage />} />
                         <Route path='*' element={<Navigate to="/" />} />
                         <Route path="/Admin/dashboard"  />
@@ -106,10 +107,8 @@ const AdminDashboard = () => {
                         <Route path="/Admin/subjects" element={<ShowSubjects />} />
                         <Route path="/Admin/subjects/subject/:classID/:subjectID"  />
                         <Route path="/Admin/subjects/chooseclass"  />
-
                         <Route path="/Admin/addsubject/:id"  />
                         <Route path="/Admin/class/subject/:classID/:subjectID"  />
-
                         <Route path="/Admin/subject/student/attendance/:studentID/:subjectID"  />
                         <Route path="/Admin/subject/student/marks/:studentID/:subjectID"  />
 
