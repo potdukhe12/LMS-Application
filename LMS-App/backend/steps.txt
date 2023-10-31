@@ -1,0 +1,17 @@
+cd backend
+
+npm init --yes
+
+npm install express mongoose dotenv nodemon cors
+
+package.json ==> scripts ==> "start": "nodemon index.js"
+
+index.js
+db.js
+
+
+////////////////////////////////////////////////////////////
+
+
+
+npm install jsonwebtoken joi joi-password-complex
