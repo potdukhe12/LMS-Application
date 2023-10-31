@@ -1,0 +1,8 @@
+cd backend
+
+npm init --yes
+
+npm install express mongoose dotenv nodemon cors
+
+package.json ==> scripts ==> "start": "nodemon index.js"
+
