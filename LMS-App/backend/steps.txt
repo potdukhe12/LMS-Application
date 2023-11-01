@@ -13,5 +13,8 @@ db.js
 ////////////////////////////////////////////////////////////
 
 
+npm install jsonwebtoken joi joi-password-complexity
 
-npm install jsonwebtoken joi joi-password-complex
+npm install bcryt
+    // to hash/ encrypt password and store in database
+
