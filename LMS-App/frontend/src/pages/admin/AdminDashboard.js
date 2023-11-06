@@ -41,9 +41,11 @@ import ShowTeachers from './teacherRelated/ShowTeachers';
 // import ClassDetails from './classRelated/ClassDetails';
 import ShowClasses from './classRelated/ShowClasses';
 import AccountMenu from '../../components/AccountMenu';
+import Logout from '../Logout';
 
 const AdminDashboard = () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(window.innerWidth >= 600);
+    // to check if application is opened in mobile devices
     const toggleDrawer = () => {
         setOpen(!open);
     };
@@ -133,7 +135,7 @@ const AdminDashboard = () => {
                         <Route path="/Admin/teachers/choosesubject/:classID/:teacherID"  />
                         <Route path="/Admin/teachers/addteacher/:id"  />
 
-                        <Route path="/logout"  />
+                        <Route path="/logout" element={<Logout />} />
                     </Routes>
                 </Box>
             </Box>
