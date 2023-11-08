@@ -8,7 +8,7 @@ import {
   CircularProgress,
   Backdrop,
 } from '@mui/material';
-import { AccountCircle, School, Group } from '@mui/icons-material';
+import { AccountCircle, School, Group, EscalatorWarning } from '@mui/icons-material';
 import styled from 'styled-components';
 
 const ChooseUser = () => {
@@ -82,7 +82,7 @@ const ChooseUser = () => {
             <StyledPaper elevation={3}>
               <div onClick={() => navigateHandler("Parent")}>
                 <Box mb={2}>
-                  <Group style={{ fontSize: 75 }} />
+                  <EscalatorWarning style={{ fontSize: 75 }} />
                 </Box>
                 <StyledTypography>
                   Parent
