@@ -108,12 +108,15 @@ export default ChooseUser;
 
 const StyledContainer = styled.div`
   background: linear-gradient(to bottom, #411d70, #7FFFD4);
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   // align-items: center;
   padding: 3rem;
   // padding-top: 10vh;
+  @media (max-width: 768px) {
+    max-height: 180vh;
+  }
 `;
 
 const StyledPaper = styled(Paper)`
