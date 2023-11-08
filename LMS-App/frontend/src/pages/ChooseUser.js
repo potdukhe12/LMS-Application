@@ -78,6 +78,19 @@ const ChooseUser = () => {
               </div>
             </StyledPaper>
           </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <StyledPaper elevation={3}>
+              <div onClick={() => navigateHandler("Parent")}>
+                <Box mb={2}>
+                  <Group style={{ fontSize: 75 }} />
+                </Box>
+                <StyledTypography>
+                  Parent
+                </StyledTypography>
+                Login as a parent and track student progress.
+              </div>
+            </StyledPaper>
+          </Grid>
         </Grid>
       </Container>
       <Backdrop

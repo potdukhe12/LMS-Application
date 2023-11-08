@@ -42,8 +42,6 @@ import ShowTeachers from './teacherRelated/ShowTeachers';
 import ShowClasses from './classRelated/ShowClasses';
 import AccountMenu from '../../components/AccountMenu';
 import Logout from '../Logout';
-import { ListItemButton, ListItemIcon, ListItemText, ListSubheader } from '@mui/material';
-import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
     const [open, setOpen] = useState(window.innerWidth >= 600);
@@ -75,7 +73,7 @@ const AdminDashboard = () => {
                             variant="h6"
                             color="inherit"
                             noWrap
-                            sx={{ flexGrow: 1 }}
+                            sx={{ flexGrow: 1, fontWeight: 'bold' }}
                         >
                             Admin Dashboard
                         </Typography>
@@ -83,18 +81,17 @@ const AdminDashboard = () => {
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open} sx={open ? styles.drawerStyled : styles.hideDrawer}>
-                    <Toolbar sx={styles.toolBarStyled} style={{backgroundColor:"#097969"}} onClick={toggleDrawer}>
+                    <Toolbar sx={styles.toolBarStyled} style={{backgroundColor:"#088F8F"}} onClick={toggleDrawer}>
                         <Typography
                             component="h1"
                             variant="h6"
                             color="white"
                             noWrap
-                            sx={{ flexGrow: 1 }}
+                            sx={{ flexGrow: 1, marginLeft: '14px', fontWeight: 'bold' }}
                         >
                             Menu
                         </Typography>
-                        <IconButton 
-                            onClick={toggleDrawer}>
+                        <IconButton onClick={toggleDrawer}>
                             <ChevronLeftIcon sx={{ color: 'white' }} />
                         </IconButton>
                     </Toolbar>
