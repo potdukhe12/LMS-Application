@@ -120,7 +120,7 @@ const StyledContainer = styled.div`
 `;
 
 const StyledPaper = styled(Paper)`
-  padding: 25px;
+  padding: 20px;
   text-align: center;
   background-color: #1f1f38;
   color:rgba(255, 255, 255, 0.6);

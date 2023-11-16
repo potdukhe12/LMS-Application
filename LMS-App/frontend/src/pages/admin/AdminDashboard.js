@@ -10,6 +10,9 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import 'react-calendar/dist/Calendar.css';
+import '../../components/CalendarStyles.css';
+
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { AppBar, Drawer } from '../../components/styles';
 // import Logout from '../Logout';
@@ -42,10 +45,18 @@ import ShowTeachers from './teacherRelated/ShowTeachers';
 import ShowClasses from './classRelated/ShowClasses';
 import AccountMenu from '../../components/AccountMenu';
 import Logout from '../Logout';
+import Calendar from 'react-calendar';
 
 const AdminDashboard = () => {
     const [open, setOpen] = useState(window.innerWidth >= 600);
     // to check if application is opened in mobile devices
+
+    const [selectedDate, setSelectedDate] = useState(new Date()); // State to track selected date
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
+
     const toggleDrawer = () => {
         setOpen(!open);
     };
@@ -146,6 +157,25 @@ const AdminDashboard = () => {
 
                         <Route path="/logout" element={<Logout />} />
                     </Routes>
+                </Box>
+                <Box component="main" sx={styles.boxStyled}>
+                    <Toolbar />
+                    <Typography
+                        component="h1"
+                        variant="h6"
+                        color="inherit"
+                        noWrap
+                        sx={{ flexGrow: 1, fontWeight: 'bold' }}
+                        >
+                            Notice Section
+                    </Typography>
+                    <Box sx={{ marginTop: '20px' }}>
+                        <Calendar
+                            onChange={handleDateChange}
+                            value={selectedDate}
+                            className="custom-calendar"
+                        />
+                    </Box>
                 </Box>
             </Box>
         </>

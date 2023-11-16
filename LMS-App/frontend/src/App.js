@@ -19,6 +19,8 @@ function App() {
       {currentRole === null &&
         <Routes>
           {/* <Route path="/" element={<Homepage />} />  */}
+          
+          <Route path="/" element={<ChooseUser />} /> 
           <Route path="/choose" element={<ChooseUser />} />
 
           <Route path="/Adminlogin" element={<LoginPage role="Admin" />} />

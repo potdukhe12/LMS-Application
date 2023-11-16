@@ -1,0 +1,56 @@
+/* CalendarStyles.css */
+
+/* Customize the calendar container */
+.custom-calendar {
+    width: 300px;
+    max-width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Customize the day and month labels */
+  .react-calendar__navigation__label,
+  .react-calendar__month-view__weekdays__weekday {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Customize the day button */
+  .react-calendar__tile {
+    border-radius: 0;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .react-calendar__tile:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Highlight today's date */
+  .react-calendar__tile--active {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  /* Style the navigation buttons */
+  .react-calendar__navigation button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 8px;
+    margin: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .react-calendar__navigation button:hover {
+    background-color: #388e3c;
+  }
+  
+  /* Hide the calendar navigation arrow if not needed */
+  .react-calendar__navigation button:disabled {
+    display: none;
+  }
+  
