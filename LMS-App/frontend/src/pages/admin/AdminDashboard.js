@@ -158,7 +158,7 @@ const AdminDashboard = () => {
                         <Route path="/logout" element={<Logout />} />
                     </Routes>
                 </Box>
-                <Box component="main" sx={styles.boxStyled}>
+                <Box component="main" sx={styles.sideBoxStyled}>
                     <Toolbar />
                     <Typography
                         component="h1"
@@ -193,6 +193,20 @@ const styles = {
         flexGrow: 1,
         height: '100vh',
         overflow: 'auto',
+    },
+    sideBoxStyled: {
+        backgroundColor: (theme) =>
+            theme.palette.mode === 'light'
+                ? theme.palette.grey[100]
+                : theme.palette.grey[900],
+        flexGrow: 1,
+        // height: '100vh',
+        padding: '4px',
+        overflow: 'auto',
+        marginTop: '10px',
+        '@media (max-width: 600px)': {
+            display: 'none', // Hide the box on screens with a width of 600px or less
+        },
     },
     toolBarStyled: {
         display: 'flex',

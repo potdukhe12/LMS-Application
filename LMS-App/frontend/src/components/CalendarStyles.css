@@ -2,11 +2,12 @@
 
 /* Customize the calendar container */
 .custom-calendar {
-    width: 300px;
+    width: 350px;
     max-width: 100%;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    padding: 2px;
     font-family: 'Arial', sans-serif;
   }
   
@@ -38,13 +39,20 @@
     background-color: #4caf50;
     color: #fff;
     border: none;
-    border-radius: 50%;
-    padding: 8px;
+    border-radius: 5%;
+    padding: 4px;
     margin: 2px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
   }
   
+  /* Adjust the button size for smaller screens */
+    @media (max-width: 600px) {
+        .react-calendar__navigation button {
+            min-width: 18px;
+        }
+    }
+    
   .react-calendar__navigation button:hover {
     background-color: #388e3c;
   }

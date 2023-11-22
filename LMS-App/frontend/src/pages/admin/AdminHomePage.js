@@ -32,9 +32,10 @@ const AdminHomePage = () => {
     // const numberOfClasses = sclassesList && sclassesList.length;
     // const numberOfTeachers = teachersList && teachersList.length;
 
-    const numberOfStudents = 5;
+    const numberOfStudents = 50;
     const numberOfClasses = 5;
-    const numberOfTeachers = 5;    
+    const numberOfTeachers = 10;
+    const feesCollection = 35000;    
 
     return (
         <>
@@ -73,7 +74,7 @@ const AdminHomePage = () => {
                             <Title>
                                 Fees Collection
                             </Title>
-                            <Data start={0} end={23000} duration={2.5} prefix="₹" />                        </StyledPaper>
+                            <Data start={0} end={feesCollection} duration={1.5} prefix="₹" />                        </StyledPaper>
                     </Grid>
                     <Grid item xs={12} md={12} lg={12}>
                         <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
@@ -91,7 +92,7 @@ const StyledPaper = styled(Paper)`
   padding: 16px;
   display: flex;
   flex-direction: column;
-  height: 200px;
+  min-height: 200px;
   justify-content: space-between;
   align-items: center;
   text-align: center;
