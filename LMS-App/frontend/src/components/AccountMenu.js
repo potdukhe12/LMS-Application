@@ -7,22 +7,16 @@ import { Box,
          Divider, 
          IconButton, 
          Tooltip, 
-         ListItemButton,
          ListItemText} from '@mui/material';
 import { Settings, Logout } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import CustomList from './CustomList';
 
 const AccountMenu = () => {
     const [anchorEl, setAnchorEl] = useState(null);
-
     const open = Boolean(anchorEl);
-
-    // const { currentRole, currentUser } = useSelector(state => state.user);
-    const currentUser = {name:"Saurabh"};
-    const currentRole = "admin";
-
+    const { currentRole, currentUser } = useSelector(state => state.user);
+    
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };

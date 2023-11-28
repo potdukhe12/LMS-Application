@@ -3,9 +3,9 @@ import { IconButton, Box, Menu, MenuItem, ListItemIcon, Tooltip, Button } from '
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteUser } from '../../../redux/userRelated/userHandle';
+// import { deleteUser } from '../../../redux/userRelated/userHandle';
 import { getAllSclasses } from '../../../redux/sclassRelated/sclassHandle';
-import { BlueButton, GreenButton, RedButton } from '../../../components/buttonStyles';
+import { BlueButton, GreenButton } from '../../../components/buttonStyles';
 import TableTemplate from '../../../components/TableTemplate';
 
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
@@ -13,7 +13,7 @@ import PostAddIcon from '@mui/icons-material/PostAdd';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import styled from 'styled-components';
-import SpeedDialTemplate from '../../../components/SpeedDialTemplate';
+// import SpeedDialTemplate from '../../../components/SpeedDialTemplate';
 import Popup from '../../../components/Popup';
 
 const ShowClasses = () => {
@@ -21,84 +21,84 @@ const ShowClasses = () => {
 
   ////////////////////////
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const { sclassesList, loading, error, getresponse } = useSelector((state) => state.sclass);
-  // const { currentUser } = useSelector(state => state.user)
+  const { sclassesList, loading, error, getresponse } = useSelector((state) => state.sclass);
+  const { currentUser } = useSelector(state => state.user)
 
-  // const adminID = currentUser._id
+  const adminID = currentUser._id
 
-  // useEffect(() => {
-  //   dispatch(getAllSclasses(adminID, "Sclass"));
-  // }, [adminID, dispatch]);
+  useEffect(() => {
+    dispatch(getAllSclasses(adminID, "Sclass"));
+  }, [adminID, dispatch]);
 
-  // if (error) {
-  //   console.log(error)
-  // }
+  if (error) {
+    console.log(error)
+  }
 
-  // const [showPopup, setShowPopup] = useState(false);
-  // const [message, setMessage] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+  const [message, setMessage] = useState("");
 
-  // const deleteHandler = (deleteID, address) => {
-  //   console.log(deleteID);
-  //   console.log(address);
-  //   setMessage("Sorry the delete function has been disabled for now.")
-  //   setShowPopup(true)
-  //   // dispatch(deleteUser(deleteID, address))
-  //   //   .then(() => {
-  //   //     dispatch(getAllSclasses(adminID, "Sclass"));
-  //   //   })
-  // }
+  const deleteHandler = (deleteID, address) => {
+    console.log(deleteID);
+    console.log(address);
+    setMessage("Sorry the delete function has been disabled for now.")
+    setShowPopup(true)
+    // dispatch(deleteUser(deleteID, address))
+    //   .then(() => {
+    //     dispatch(getAllSclasses(adminID, "Sclass"));
+    //   })
+  }
 
-  // const sclassColumns = [
-  //   { id: 'name', label: 'Class Name', minWidth: 170 },
-  // ]
+  const sclassColumns = [
+    { id: 'name', label: 'Class Name', minWidth: 170 },
+  ]
 
-  // const sclassRows = sclassesList && sclassesList.length > 0 && sclassesList.map((sclass) => {
-  //   return {
-  //     name: sclass.sclassName,
-  //     id: sclass._id,
-  //   };
-  // })
+  const sclassRows = sclassesList && sclassesList.length > 0 && sclassesList.map((sclass) => {
+    return {
+      name: sclass.sclassName,
+      id: sclass._id,
+    };
+  })
 
   /////////////////////
 
-    // Dummy data to simulate the response from Redux store
-    const dummyData = [
-      {
-        id: '1',
-        sclassName: 'Class A',
-      },
-      {
-        id: '2',
-        sclassName: 'Class B',
-      },
-    ];
+    // // Dummy data to simulate the response from Redux store
+    // const dummyData = [
+    //   {
+    //     id: '1',
+    //     sclassName: 'Class A',
+    //   },
+    //   {
+    //     id: '2',
+    //     sclassName: 'Class B',
+    //   },
+    // ];
   
-    // Simulate loading and error states
-    const loading = false;
-    const error = null;
-    const getresponse = false;
+    // // Simulate loading and error states
+    // const loading = false;
+    // const error = null;
+    // const getresponse = false;
     // const getresponse = true;
   
-    const [showPopup, setShowPopup] = useState(false);
-    const [message, setMessage] = useState("");
+    // const [showPopup, setShowPopup] = useState(false);
+    // const [message, setMessage] = useState("");
   
-    const deleteHandler = (deleteID, address) => {
-      setMessage("Sorry, the delete function has been disabled for now.")
-      setShowPopup(true);
-    }
+    // const deleteHandler = (deleteID, address) => {
+    //   setMessage("Sorry, the delete function has been disabled for now.")
+    //   setShowPopup(true);
+    // }
   
-    const sclassColumns = [
-      { id: 'name', label: 'Class Name', minWidth: 170 },
-    ];
+    // const sclassColumns = [
+    //   { id: 'name', label: 'Class Name', minWidth: 170 },
+    // ];
   
-    const sclassRows = dummyData.map((sclass) => {
-      return {
-        name: sclass.sclassName,
-        id: sclass.id,
-      };
-    });
+    // const sclassRows = dummyData.map((sclass) => {
+    //   return {
+    //     name: sclass.sclassName,
+    //     id: sclass.id,
+    //   };
+    // });
 
     ///////////////////////
 
@@ -204,8 +204,9 @@ const ShowClasses = () => {
             </Box>
             :
             <>
-              {Array.isArray(dummyData) && dummyData.length > 0 &&
-              // {Array.isArray(sclassesList) && sclassesList.length > 0 &&
+              {
+                //Array.isArray(dummyData) && dummyData.length > 0 &&
+                Array.isArray(sclassesList) && sclassesList.length > 0 &&
                 <TableTemplate buttonHaver={SclassButtonHaver} columns={sclassColumns} rows={sclassRows} />
               }
 
@@ -219,7 +220,7 @@ const ShowClasses = () => {
                   Add New Class
                 </Button>
                 <Button variant="contained" color="error"
-                      //  onClick={() => deleteHandler(adminID, "Sclasses")}
+                       onClick={() => deleteHandler(adminID, "Sclasses")}
                     >
                   <DeleteIcon sx={{marginRight: '5px'}}/>
                   Delete All Classes

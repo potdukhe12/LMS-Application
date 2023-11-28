@@ -3,37 +3,83 @@ import { useNavigate } from 'react-router-dom';
 import {
   Grid,
   Paper,
-  Box,
   Container,
   CircularProgress,
   Backdrop,
 } from '@mui/material';
 import { AccountCircle, School, Group, EscalatorWarning } from '@mui/icons-material';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../redux/userRelated/userHandle';
+import Popup from '../components/Popup';
 
-const ChooseUser = () => {
-  const navigate = useNavigate();
+const ChooseUser = ({ visitor }) => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  // const { status, currentUser, currentRole } = useSelector(state => state.user);
+  const { status, currentUser, currentRole } = useSelector(state => state.user);;
 
   const [loader, setLoader] = useState(false)
+  const [showPopup, setShowPopup] = useState(false);
+  const [message, setMessage] = useState("");
 
   const navigateHandler = (user) => {
+    const password = "zxc"
     if (user === "Admin") {
-      navigate('/Adminlogin');
+      if (visitor === "guest") {
+        const email = "admin@123.com"
+        const fields = { email, password }
+        setLoader(true)
+        dispatch(loginUser(fields, user))
+      }
+      else {
+        navigate('/Adminlogin');
+      }
     }
 
     else if (user === "Student") {
-      navigate('/Studentlogin');
+      if (visitor === "guest") {
+        const rollNum = "1"
+        const studentName = "Sanki Singh"
+        const fields = { rollNum, studentName, password }
+        setLoader(true)
+        dispatch(loginUser(fields, user))
+      }
+      else {
+        navigate('/Studentlogin');
+      }
     }
 
     else if (user === "Teacher") {
-      navigate('/Teacherlogin');
+      if (visitor === "guest") {
+        const email = "tony@12"
+        const fields = { email, password }
+        setLoader(true)
+        dispatch(loginUser(fields, user))
+      }
+      else {
+        navigate('/Teacherlogin');
+      }
     }
   }
 
   useEffect(() => {
-  }, [navigate]);
+    if (status === 'success' || currentUser !== null) {
+      if (currentRole === 'Admin') {
+        navigate('/Admin/dashboard');
+      }
+      else if (currentRole === 'Student') {
+        navigate('/Student/dashboard');
+      } else if (currentRole === 'Teacher') {
+        navigate('/Teacher/dashboard');
+      }
+    }
+    else if (status === 'error') {
+      setLoader(false)
+      setMessage("Network Error")
+      setShowPopup(true)
+    }
+  }, [status, currentRole, navigate, currentUser]);
 
   return (
     <StyledContainer>
@@ -42,9 +88,7 @@ const ChooseUser = () => {
           <Grid item xs={12} sm={6} md={4}>
             <div onClick={() => navigateHandler("Admin")}>
               <StyledPaper elevation={3}>
-                <Box mb={2}>
-                  <AccountCircle style={{ fontSize: 100 }} />
-                </Box>
+                <AccountCircle style={{ fontSize: 100 }} />
                 <StyledTypography>
                   Admin
                 </StyledTypography>
@@ -55,9 +99,7 @@ const ChooseUser = () => {
           <Grid item xs={12} sm={6} md={4}>
             <StyledPaper elevation={3}>
               <div onClick={() => navigateHandler("Student")}>
-                <Box mb={2}>
-                  <School style={{ fontSize: 100 }} />
-                </Box>
+                <School style={{ fontSize: 100 }} />
                 <StyledTypography>
                   Student
                 </StyledTypography>
@@ -68,9 +110,7 @@ const ChooseUser = () => {
           <Grid item xs={12} sm={6} md={4}>
             <StyledPaper elevation={3}>
               <div onClick={() => navigateHandler("Teacher")}>
-                <Box mb={2}>
-                  <Group style={{ fontSize: 100 }} />
-                </Box>
+                <Group style={{ fontSize: 100 }} />
                 <StyledTypography>
                   Teacher
                 </StyledTypography>
@@ -81,9 +121,7 @@ const ChooseUser = () => {
           <Grid item xs={12} sm={6} md={4}>
             <StyledPaper elevation={3}>
               <div onClick={() => navigateHandler("Parent")}>
-                <Box mb={2}>
-                  <EscalatorWarning style={{ fontSize: 75 }} />
-                </Box>
+                <EscalatorWarning style={{ fontSize: 75 }} />
                 <StyledTypography>
                   Parent
                 </StyledTypography>
@@ -100,6 +138,7 @@ const ChooseUser = () => {
         <CircularProgress color="inherit" />
         Please Wait
       </Backdrop>
+      <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
     </StyledContainer>
   );
 };

@@ -46,11 +46,12 @@ import ShowClasses from './classRelated/ShowClasses';
 
 import AccountMenu from '../../components/AccountMenu';
 import Logout from '../Logout';
-import Calendar from 'react-calendar';
+// import Calendar from 'react-calendar';
+import CalendarComponent from './Calender';
 
 const AdminDashboard = () => {
     
-    const { currentUser, response, error } = useSelector((state) => state.user);
+    const { currentUser } = useSelector((state) => state.user);
 
     const [open, setOpen] = useState(window.innerWidth >= 600);
     // to check if application is opened in mobile devices
@@ -171,6 +172,8 @@ const AdminDashboard = () => {
                         <Route path="/Admin/teachers/choosesubject/:id" element={<ChooseSubject situation="Norm" />} />
                         <Route path="/Admin/teachers/choosesubject/:classID/:teacherID" element={<ChooseSubject situation="Teacher" />} />
                         <Route path="/Admin/teachers/addteacher/:id" element={<AddTeacher />} />
+                        
+                        <Route path="/Admin/calendar" element={<CalendarComponent />} />
 
                         <Route path="/logout" element={<Logout />} />
                     </Routes>

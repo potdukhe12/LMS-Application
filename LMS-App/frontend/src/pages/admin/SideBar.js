@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Divider, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from '@mui/material';
-import { Link, useLocation } from 'react-router-dom';
+import { Divider, ListSubheader } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
 import HomeIcon from "@mui/icons-material/Home";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
@@ -12,6 +12,7 @@ import SupervisorAccountOutlinedIcon from '@mui/icons-material/SupervisorAccount
 import ReportIcon from '@mui/icons-material/Report';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import CustomList from '../../components/CustomList';
+import { EditCalendar } from '@mui/icons-material';
 
 const SideBar = () => {
     const location = useLocation();
@@ -66,6 +67,13 @@ const SideBar = () => {
                     icon={<AnnouncementOutlinedIcon />}
                     primaryText="Notices"
                     isActive={isItemActive('/Admin/notices')}
+                />
+                <CustomList
+                    to="/Admin/calendar"
+                    onClick={() => handleItemClick('/Admin/calendar')}
+                    icon={<EditCalendar />}
+                    primaryText="Calendar"
+                    isActive={isItemActive('/Admin/calendar')}
                 />
                 <CustomList
                     to="/Admin/complains"

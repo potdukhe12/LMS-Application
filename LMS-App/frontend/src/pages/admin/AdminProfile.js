@@ -52,7 +52,12 @@ const AdminProfile = () => {
       <span><strong>Email:</strong> {currentUser.email}</span>
       <span><strong>School:</strong> {currentUser.schoolName}</span>
     </UserInfoContainer>
-            {/* <Button variant="contained" color="error" onClick={deleteHandler}>Delete</Button> */}
+            <Button variant="contained" 
+                color="error" 
+                onClick={deleteHandler}
+                disabled='Disabled'>
+              Delete
+            </Button>
             <Button variant="contained" sx={styles.showButton}
                 onClick={() => setShowTab(!showTab)}>
                 {showTab ? <KeyboardArrowUp /> : <KeyboardArrowDown />}{buttonText}
