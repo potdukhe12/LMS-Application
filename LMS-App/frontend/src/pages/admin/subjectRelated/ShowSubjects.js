@@ -5,7 +5,7 @@ import { getSubjectList } from '../../../redux/sclassRelated/sclassHandle';
 import { deleteUser } from '../../../redux/userRelated/userHandle';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import {
-    Paper, Box, IconButton,
+    Paper, Box, IconButton, Button, Tooltip,
 } from '@mui/material';
 import DeleteIcon from "@mui/icons-material/Delete";
 import TableTemplate from '../../../components/TableTemplate';
@@ -135,7 +135,7 @@ const ShowSubjects = () => {
     };
 
     const subjectColumns = [
-        { id: 'subName', label: 'Sub Name', minWidth: 170 },
+        { id: 'subName', label: 'Subject Name', minWidth: 170 },
         { id: 'sessions', label: 'Sessions', minWidth: 170 },
         { id: 'sclassName', label: 'Class', minWidth: 170 },
     ];
@@ -153,9 +153,11 @@ const ShowSubjects = () => {
     const SubjectsButtonHaver = ({ row }) => {
         return (
             <>
-                <IconButton onClick={() => deleteHandler(row.id, 'Subject')}>
-                    <DeleteIcon color="error" />
-                </IconButton>
+                <Tooltip title="Delete Subject" sx={{ marginRight: '15px' }}>
+                    <IconButton onClick={() => deleteHandler(row.id, 'Subject')}>
+                        <DeleteIcon color="error" />
+                    </IconButton>
+                </Tooltip>
                 <BlueButton
                     variant="contained"
                     onClick={() =>
@@ -168,18 +170,18 @@ const ShowSubjects = () => {
         );
     };
 
-    const actions = [
-        {
-            icon: <PostAddIcon color="primary" />,
-            name: 'Add New Subject',
-            action: () => navigate('/Admin/subjects/chooseclass'),
-        },
-        {
-            icon: <DeleteIcon color="error" />,
-            name: 'Delete All Subjects',
-            // action: () => deleteHandler(currentUser._id, 'Subjects'),
-        },
-    ];
+    // const actions = [
+    //     {
+    //         icon: <PostAddIcon color="primary" />,
+    //         name: 'Add New Subject',
+    //         action: () => navigate('/Admin/subjects/chooseclass'),
+    //     },
+    //     {
+    //         icon: <DeleteIcon color="error" />,
+    //         name: 'Delete All Subjects',
+    //         // action: () => deleteHandler(currentUser._id, 'Subjects'),
+    //     },
+    // ];
 
     return (
         <>
@@ -195,12 +197,31 @@ const ShowSubjects = () => {
                             </GreenButton>
                         </Box>
                         :
-                        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+                        <Box sx={{ width: '100%', height: '75vh', backgroundColor: 'white', overflow: 'hidden' }}>
                             {Array.isArray(subjectsList) && subjectsList.length > 0 &&
                                 <TableTemplate buttonHaver={SubjectsButtonHaver} columns={subjectColumns} rows={subjectRows} />
                             }
-                            <SpeedDialTemplate actions={actions} />
-                        </Paper>
+
+                            {/* ////////////////////////// */}
+
+                            {/* <SpeedDialTemplate actions={actions} /> */}
+
+                            <Box sx={{ display: 'flex', justifyContent: 'flex-end', margin: '16px' }}>
+                                <Button variant="contained" sx={{marginRight: '10px'}} onClick={() => navigate('/Admin/subjects/chooseclass')}>
+                                    <PostAddIcon sx={{marginRight: '5px'}}/>
+                                    Add New Class
+                                </Button>
+                                <Button variant="contained" color="error"
+                                    //  onClick={() => deleteHandler(currentUser._id, 'Subjects')}
+                                    >
+                                    <DeleteIcon sx={{marginRight: '5px'}}/>
+                                    Delete All Classes
+                                </Button>
+                            </Box>
+                            
+                            {/* ////////////////////////// */}
+                            
+                        </Box>
                     }
                 </>
             }

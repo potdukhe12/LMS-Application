@@ -40,14 +40,14 @@ const SeeNotice = () => {
         };
     });
     return (
-        <div style={{ marginTop: '50px', marginRight: '20px' }}>
+        <div style={{ marginTop: '30px', marginRight: '20px' }}>
             {loading ? (
                 <div style={{ fontSize: '20px' }}>Loading...</div>
             ) : response ? (
                 <div style={{ fontSize: '20px' }}>No Notices to Show Right Now</div>
             ) : (
                 <>
-                    <h3 style={{ fontSize: '30px', marginBottom: '40px' }}>Notices</h3>
+                    <h3 style={{ fontSize: '30px', marginBottom: '40px' }}>Notices & Events</h3>
                     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                         {Array.isArray(noticesList) && noticesList.length > 0 &&
                             <TableViewTemplate columns={noticeColumns} rows={noticeRows} />

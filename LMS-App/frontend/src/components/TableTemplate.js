@@ -7,10 +7,13 @@ const TableTemplate = ({ buttonHaver: ButtonHaver, columns, rows }) => {
     const [rowsPerPage, setRowsPerPage] = useState(5);
     return (
         <>
-            <TableContainer>
+            <TableContainer sx={{ borderRadius: '20px', border: '1px solid #000' }}>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                         <StyledTableRow>
+                            <StyledTableCell align="center" sx={{ minWidth: '20px' }}>
+                              
+                            </StyledTableCell>
                             {columns.map((column) => (
                                 <StyledTableCell
                                     key={column.id}
@@ -31,6 +34,9 @@ const TableTemplate = ({ buttonHaver: ButtonHaver, columns, rows }) => {
                             .map((row) => {
                                 return (
                                     <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                                        <StyledTableCell align="center">
+
+                                        </StyledTableCell>
                                         {columns.map((column) => {
                                             const value = row[column.id];
                                             return (
@@ -53,7 +59,7 @@ const TableTemplate = ({ buttonHaver: ButtonHaver, columns, rows }) => {
                 </Table>
             </TableContainer>
             <TablePagination
-                rowsPerPageOptions={[5, 10, 25, 100]}
+                rowsPerPageOptions={[5, 10, 25]}
                 component="div"
                 count={rows.length}
                 rowsPerPage={rowsPerPage}

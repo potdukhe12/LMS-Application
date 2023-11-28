@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Paper, Box, IconButton
+    Paper, Box, IconButton, Button, Tooltip
 } from '@mui/material';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import { BlackButton, BlueButton, GreenButton } from '../../../components/buttonStyles';
@@ -27,8 +27,56 @@ const ShowStudents = () => {
             sclassName: 'Class B',
             id: 2,
         },
-        // Add more dummy data as needed
+        {
+            name: 'Bob Johnson',
+            rollNum: '103',
+            sclassName: 'Class A',
+            id: 3,
+        },
+        {
+            name: 'Alice Williams',
+            rollNum: '104',
+            sclassName: 'Class B',
+            id: 4,
+        },
+        {
+            name: 'Charlie Brown',
+            rollNum: '105',
+            sclassName: 'Class A',
+            id: 5,
+        },
+        {
+            name: 'Eva Davis',
+            rollNum: '106',
+            sclassName: 'Class B',
+            id: 6,
+        },
+        {
+            name: 'Frank Martin',
+            rollNum: '107',
+            sclassName: 'Class A',
+            id: 7,
+        },
+        {
+            name: 'Grace Wilson',
+            rollNum: '108',
+            sclassName: 'Class B',
+            id: 8,
+        },
+        {
+            name: 'Henry Turner',
+            rollNum: '109',
+            sclassName: 'Class A',
+            id: 9,
+        },
+        {
+            name: 'Ivy Rodriguez',
+            rollNum: '110',
+            sclassName: 'Class B',
+            id: 10,
+        },
     ];
+    
 
     const [showPopup, setShowPopup] = React.useState(false);
     const [message, setMessage] = React.useState("");
@@ -49,9 +97,11 @@ const ShowStudents = () => {
     const StudentButtonHaver = ({ row }) => {
         return (
             <>
-                <IconButton onClick={() => deleteHandler(row.id, "Student")}>
-                    <PersonRemoveIcon color="error" />
-                </IconButton>
+                <Tooltip title="Delete Student" sx={{marginRight: '25px'}}>
+                    <IconButton onClick={() => deleteHandler(row.id, "Student")}>
+                        <PersonRemoveIcon color="error" />
+                    </IconButton>
+                </Tooltip>
                 <BlueButton variant="contained"
                     onClick={() => navigate("/Admin/students/student/" + row.id)}>
                     View
@@ -73,12 +123,31 @@ const ShowStudents = () => {
 
     return (
         <>
-            <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+            <Box sx={{ width: '100%', overflow: 'hidden' }}>
                 {Array.isArray(dummyStudentsList) && dummyStudentsList.length > 0 &&
                     <TableTemplate buttonHaver={StudentButtonHaver} columns={studentColumns} rows={studentRows} />
                 }
-                <SpeedDialTemplate actions={actions} />
-            </Paper>
+
+                {/* ////////////////////////// */}
+
+                {/* <SpeedDialTemplate actions={actions} /> */}
+
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end', margin: '16px' }}>
+                    <Button variant="contained" sx={{marginRight: '10px'}} onClick={() => navigate('/Admin/addstudents')}>
+                        <PersonAddAlt1Icon sx={{marginRight: '8px'}}/>
+                        Add New Student
+                    </Button>
+                    <Button variant="contained" color="error"
+                        //  onClick={() => deleteHandler(1, "Students")}
+                        >
+                        <PersonRemoveIcon sx={{marginRight: '8px'}}/>
+                        Delete All Students
+                    </Button>
+                </Box>
+                
+                {/* ////////////////////////// */}
+                            
+            </Box>
             <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
         </>
     );

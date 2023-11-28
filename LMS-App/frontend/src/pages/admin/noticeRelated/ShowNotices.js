@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {
-    Paper, Box, IconButton
+    Paper, Box, IconButton, Button, Tooltip
 } from '@mui/material';
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -23,12 +23,35 @@ const ShowNotices = () => {
             id: 1,
         },
         {
-            title: 'Event Reminder',
+            title: 'Event Reminder 2',
             details: 'Don\'t forget about the upcoming event!',
             date: '2023-02-20',
             id: 2,
         },
-        // Add more dummy data as needed
+        {
+            title: 'Important Notice 3',
+            details: 'This is the first important notice.',
+            date: '2023-01-15',
+            id: 3,
+        },
+        {
+            title: 'Event Reminder 4',
+            details: 'Don\'t forget about the upcoming event!',
+            date: '2023-02-20',
+            id: 4,
+        },
+        {
+            title: 'Important Notice 5',
+            details: 'This is the first important notice.',
+            date: '2023-01-15',
+            id: 5,
+        },
+        {
+            title: 'Event Reminder 6',
+            details: 'Don\'t forget about the upcoming event!',
+            date: '2023-02-20',
+            id: 6,
+        },
     ];
 
     const [showPopup, setShowPopup] = React.useState(false);
@@ -50,32 +73,53 @@ const ShowNotices = () => {
     const NoticeButtonHaver = ({ row }) => {
         return (
             <>
-                <IconButton onClick={() => deleteHandler(row.id, "Notice")}>
-                    <DeleteIcon color="error" />
-                </IconButton>
+                <Tooltip title="Delete">
+                    <IconButton onClick={() => deleteHandler(row.id, "Notice")}>
+                        <DeleteIcon color="error" />
+                    </IconButton>
+                </Tooltip>
             </>
         );
     };
 
-    const actions = [
-        {
-            icon: <NoteAddIcon color="primary" />, name: 'Add New Notice',
-            action: () => navigate("/Admin/addnotice")
-        },
-        {
-            icon: <DeleteIcon color="error" />, name: 'Delete All Notices',
-            action: () => deleteHandler(1, "Notices"), // Replace 1 with the actual user ID
-        }
-    ];
+    // const actions = [
+    //     {
+    //         icon: <NoteAddIcon color="primary" />, name: 'Add New Notice',
+    //         action: () => navigate("/Admin/addnotice")
+    //     },
+    //     {
+    //         icon: <DeleteIcon color="error" />, name: 'Delete All Notices',
+    //         action: () => deleteHandler(1, "Notices"), // Replace 1 with the actual user ID
+    //     }
+    // ];
 
     return (
         <>
-            <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+            <Box sx={{ width: '100%', overflow: 'hidden' }}>
                 {Array.isArray(dummyNoticesList) && dummyNoticesList.length > 0 &&
                     <TableTemplate buttonHaver={NoticeButtonHaver} columns={noticeColumns} rows={noticeRows} />
                 }
-                <SpeedDialTemplate actions={actions} />
-            </Paper>
+
+                {/* ////////////////////////// */}
+  
+                {/* <SpeedDialTemplate actions={actions} /> */}
+  
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end', margin: '16px' }}>
+                  <Button variant="contained" sx={{marginRight: '10px'}} onClick={() => navigate("/Admin/addnotice")}>
+                    <NoteAddIcon sx={{marginRight: '5px'}}/>
+                    Add New Notice
+                  </Button>
+                  <Button variant="contained" color="error"
+                        //  onClick={() => deleteHandler(adminID, "Sclasses")}
+                      >
+                    <DeleteIcon sx={{marginRight: '5px'}}/>
+                    Delete All Notices
+                  </Button>
+                </Box>
+                
+                {/* ////////////////////////// */}
+  
+            </Box>
             <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
         </>
     );

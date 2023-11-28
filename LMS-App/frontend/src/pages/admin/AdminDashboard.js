@@ -15,7 +15,6 @@ import '../../components/CalendarStyles.css';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { AppBar, Drawer } from '../../components/styles';
-// import Logout from '../Logout';
 import SideBar from './SideBar';
 import AdminProfile from './AdminProfile';
 import AdminHomePage from './AdminHomePage';
@@ -40,14 +39,19 @@ import ShowSubjects from './subjectRelated/ShowSubjects';
 import ShowTeachers from './teacherRelated/ShowTeachers';
 // import TeacherDetails from './teacherRelated/TeacherDetails';
 
-// import AddClass from './classRelated/AddClass';
+import AddClass from './classRelated/AddClass';
 // import ClassDetails from './classRelated/ClassDetails';
 import ShowClasses from './classRelated/ShowClasses';
+
 import AccountMenu from '../../components/AccountMenu';
 import Logout from '../Logout';
 import Calendar from 'react-calendar';
+import { useSelector } from 'react-redux';
 
 const AdminDashboard = () => {
+    
+    const { currentUser, response, error } = useSelector((state) => state.user);
+
     const [open, setOpen] = useState(window.innerWidth >= 600);
     // to check if application is opened in mobile devices
 
@@ -65,11 +69,13 @@ const AdminDashboard = () => {
         <>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar open={open} position='absolute'>
+                <AppBar open={open} position='absolute' sx={{
+                        background: 'linear-gradient(to right, #54ffd7, #a0ffe9, #09a7a7)' // Replace with your desired gradient colors
+                    }}>
                     <Toolbar sx={{ pr: '24px' }}>
                         <IconButton
                             edge="start"
-                            color="inherit"
+                            color="#088F8F"
                             aria-label="open drawer"
                             onClick={toggleDrawer}
                             sx={{
@@ -82,11 +88,20 @@ const AdminDashboard = () => {
                         <Typography
                             component="h1"
                             variant="h6"
-                            color="inherit"
+                            color='#088F8F'
                             noWrap
-                            sx={{ flexGrow: 1, fontWeight: 'bold' }}
+                            sx={{ flexGrow: 1, fontWeight: 'bold', fontSize: '28px' }}
                         >
-                            Admin Dashboard
+                            {currentUser.schoolName}
+                        </Typography>
+                        <Typography
+                            component="h1"
+                            variant="h6"
+                            color='#088F8F'
+                            noWrap
+                            sx={{ flexGrow: 38, fontWeight: 'normal', fontSize: '16px' }}
+                        >
+                            (Admin Dashboard)
                         </Typography>
                         <AccountMenu />
                     </Toolbar>
@@ -118,7 +133,7 @@ const AdminDashboard = () => {
                         <Route path="/" element={<AdminHomePage />} />
                         <Route path='*' element={<Navigate to="/" />} />
                         <Route path="/Admin/dashboard"  />
-                        <Route path="/Admin/profile"  />
+                        <Route path="/Admin/profile" element={<AdminProfile />} />
                         <Route path="/Admin/complains"  />
 
                         {/* //Notice */}
@@ -135,7 +150,7 @@ const AdminDashboard = () => {
                         <Route path="/Admin/subject/student/marks/:studentID/:subjectID"  />
 
                         {/* //Class */}
-                        <Route path="/Admin/addclass"  />
+                        <Route path="/Admin/addclass" element={<AddClass />} />
                         <Route path="/Admin/classes" element={<ShowClasses />} />
                         <Route path="/Admin/classes/class/:id"  />
                         <Route path="/Admin/class/addstudents/:id"  />
@@ -158,7 +173,7 @@ const AdminDashboard = () => {
                         <Route path="/logout" element={<Logout />} />
                     </Routes>
                 </Box>
-                <Box component="main" sx={styles.sideBoxStyled}>
+                {/* <Box component="main" sx={styles.sideBoxStyled}>
                     <Toolbar />
                     <Typography
                         component="h1"
@@ -176,7 +191,7 @@ const AdminDashboard = () => {
                             className="custom-calendar"
                         />
                     </Box>
-                </Box>
+                </Box> */}
             </Box>
         </>
     );
@@ -188,11 +203,12 @@ const styles = {
     boxStyled: {
         backgroundColor: (theme) =>
             theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
+                ? theme.palette.white
                 : theme.palette.grey[900],
         flexGrow: 1,
-        height: '100vh',
+        // height: '85vh',
         overflow: 'auto',
+        margin: '50px 50px 0px 50px', 
     },
     sideBoxStyled: {
         backgroundColor: (theme) =>

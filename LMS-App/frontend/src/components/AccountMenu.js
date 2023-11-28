@@ -6,10 +6,13 @@ import { Box,
          ListItemIcon, 
          Divider, 
          IconButton, 
-         Tooltip } from '@mui/material';
+         Tooltip, 
+         ListItemButton,
+         ListItemText} from '@mui/material';
 import { Settings, Logout } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import CustomList from './CustomList';
 
 const AccountMenu = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -57,26 +60,34 @@ const AccountMenu = () => {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem>
+                <MenuItem
+                        component={Link}
+                        to={`/${currentRole}/profile`}>
                     <Avatar />
-                    <Link to={`/${currentRole}/profile`}>
-                        Profile
-                    </Link>
+                    <ListItemText>
+                            Profile
+                    </ListItemText>
                 </MenuItem>
                 <Divider />
-                <MenuItem onClick={handleClose}>
+                <MenuItem
+                        component={Link}
+                        to={`/`}>
                     <ListItemIcon>
                         <Settings fontSize="small" />
                     </ListItemIcon>
-                    Settings
+                    <ListItemText>
+                        Settings
+                    </ListItemText>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem
+                        component={Link}
+                        to={`/logout`}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
-                    <Link to="/logout">
+                    <ListItemText>
                         Logout
-                    </Link>
+                    </ListItemText>
                 </MenuItem>
             </Menu>
         </>

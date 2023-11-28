@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { IconButton, Box, Menu, MenuItem, ListItemIcon, Tooltip } from '@mui/material';
+import { IconButton, Box, Menu, MenuItem, ListItemIcon, Tooltip, Button } from '@mui/material';
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deleteUser } from '../../../redux/userRelated/userHandle';
 import { getAllSclasses } from '../../../redux/sclassRelated/sclassHandle';
-import { BlueButton, GreenButton } from '../../../components/buttonStyles';
+import { BlueButton, GreenButton, RedButton } from '../../../components/buttonStyles';
 import TableTemplate from '../../../components/TableTemplate';
 
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
@@ -109,9 +109,11 @@ const ShowClasses = () => {
     ];
     return (
       <ButtonContainer>
-        <IconButton onClick={() => deleteHandler(row.id, "Sclass")} color="secondary">
-          <DeleteIcon color="error" />
-        </IconButton>
+        <Tooltip title="Delete">
+          <IconButton onClick={() => deleteHandler(row.id, "Sclass")} color="secondary">
+            <DeleteIcon color="error" />
+          </IconButton>
+        </Tooltip>
         <BlueButton variant="contained"
           onClick={() => navigate("/Admin/classes/class/" + row.id)}>
           View
@@ -144,7 +146,7 @@ const ShowClasses = () => {
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
             >
-              <h5>Add</h5>
+              <h4>Add</h4>
               <SpeedDialIcon />
             </IconButton>
           </Tooltip>
@@ -175,16 +177,18 @@ const ShowClasses = () => {
     );
   }
 
-  const actions = [
-    {
-      icon: <AddCardIcon color="primary" />, name: 'Add New Class',
-      action: () => navigate("/Admin/addclass")
-    },
-    {
-      icon: <DeleteIcon color="error" />, name: 'Delete All Classes',
-      // action: () => deleteHandler(adminID, "Sclasses")
-    },
-  ];
+  // const actions = [
+  //   {
+  //     icon: <AddCardIcon color="primary" />, 
+  //     name: 'Add New Class',
+  //     action: () => navigate("/Admin/addclass")
+  //   },
+  //   {
+  //     icon: <DeleteIcon color="error" />, 
+  //     name: 'Delete All Classes',
+  //     // action: () => deleteHandler(adminID, "Sclasses")
+  //   },
+  // ];
 
   return (
     <>
@@ -204,7 +208,26 @@ const ShowClasses = () => {
               // {Array.isArray(sclassesList) && sclassesList.length > 0 &&
                 <TableTemplate buttonHaver={SclassButtonHaver} columns={sclassColumns} rows={sclassRows} />
               }
-              <SpeedDialTemplate actions={actions} />
+
+              {/* ////////////////////////// */}
+
+              {/* <SpeedDialTemplate actions={actions} /> */}
+
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end', margin: '16px' }}>
+                <Button variant="contained" sx={{marginRight: '10px'}} onClick={() => navigate("/Admin/addclass")}>
+                  <AddCardIcon sx={{marginRight: '5px'}}/>
+                  Add New Class
+                </Button>
+                <Button variant="contained" color="error"
+                      //  onClick={() => deleteHandler(adminID, "Sclasses")}
+                    >
+                  <DeleteIcon sx={{marginRight: '5px'}}/>
+                  Delete All Classes
+                </Button>
+              </Box>
+              
+              {/* ////////////////////////// */}
+
             </>}
         </>
       }
