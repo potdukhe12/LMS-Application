@@ -1,8 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
+
 // import Homepage from './pages/Homepage';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import StudentDashboard from './pages/student/StudentDashboard';
+import TeacherDashboard from './pages/teacher/TeacherDashboard';
+
 import ChooseUser from "./pages/ChooseUser";
 import LoginPage from "./pages/LoginPage";
 import AdminRegisterPage from './pages/admin/AdminRegisterPage';
@@ -10,9 +14,7 @@ import AdminRegisterPage from './pages/admin/AdminRegisterPage';
 function App() {
 
   const { currentRole } = useSelector(state => state.user);
-  // const currentRole = "Admin";
-  // const currentRole = null;
-
+  
   return (
     <Router>
       {/* Home */}
@@ -36,6 +38,20 @@ function App() {
       {/* Admin */}
       {currentRole === "Admin" &&
         <AdminDashboard />
+      }
+
+      {/* Student */}
+      {currentRole === "Student" &&
+        <>
+          <StudentDashboard />
+        </>
+      }
+
+      {/* Teacher */}
+      {currentRole === "Teacher" &&
+        <>
+          <TeacherDashboard />
+        </>
       }
       
     </Router>

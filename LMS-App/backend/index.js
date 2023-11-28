@@ -7,14 +7,15 @@ const connection = require("./db");
 // const authRoutes = require("./routes/auth");
 const Routes = require("./routes/route.js")
 
-// database connection
+//* database connection *//
 connection();
 
-// middlewares
+//* middlewares  *//
 app.use(express.json());
 app.use(cors());
 
-// routes
+//* routes *//
+
 // app.use("/api/users", userRoutes);
 // app.use("/api/auth", authRoutes);
 app.use('/', Routes);
