@@ -1,22 +1,23 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { Divider, ListSubheader } from '@mui/material';
 import { useLocation } from 'react-router-dom';
-
-import HomeIcon from "@mui/icons-material/Home";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import AnnouncementOutlinedIcon from '@mui/icons-material/AnnouncementOutlined';
-import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
-import SupervisorAccountOutlinedIcon from '@mui/icons-material/SupervisorAccountOutlined';
-import ReportIcon from '@mui/icons-material/Report';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import { 
+    Home as HomeIcon,        
+    ClassOutlined as ClassIcon,
+    PersonOutline as StudentIcon,
+    AssignmentOutlined as SubjectIcon,
+    SupervisorAccountOutlined as TeacherIcon,
+    AnnouncementOutlined as NoticesIcon,
+    EditCalendar,
+    ReportOutlined as ComplainsIcon,
+    AccountCircleOutlined as ProfileIcon,
+    ExitToApp as LogoutIcon,
+} from "@mui/icons-material";
 import CustomList from '../../components/CustomList';
-import { EditCalendar } from '@mui/icons-material';
 
 const SideBar = () => {
     const location = useLocation();
-    const [activeItem, setActiveItem] = React.useState('');
+    const [activeItem, setActiveItem] = useState('');
 
     const handleItemClick = (item) => {
         setActiveItem(item);
@@ -29,58 +30,59 @@ const SideBar = () => {
             <React.Fragment>
                 <CustomList
                     to="/"
+                    onClick={() => handleItemClick('Home')}
                     icon={<HomeIcon />}
                     primaryText="Home"
                     isActive={location.pathname === ("/")}
                 />
                 <CustomList
                     to="/Admin/classes"
-                    onClick={() => handleItemClick('/Admin/classes')}
-                    icon={<ClassOutlinedIcon />}
+                    onClick={() => handleItemClick('Classes')}
+                    icon={<ClassIcon />}
                     primaryText="Classes / Batch"
-                    isActive={isItemActive('/Admin/classes')}
+                    isActive={isItemActive('/Admin/classes') || activeItem==='Classes'}
                 />
                 <CustomList
                     to="/Admin/subjects"
-                    onClick={() => handleItemClick('/Admin/subjects')}
-                    icon={<AssignmentIcon />}
+                    onClick={() => handleItemClick('Subjects')}
+                    icon={<SubjectIcon />}
                     primaryText="Subjects / Cources"
-                    isActive={isItemActive('/Admin/subjects')}
+                    isActive={isItemActive('/Admin/subjects') || activeItem==='Subjects'}
                 />
                 <CustomList
                     to="/Admin/teachers"
-                    onClick={() => handleItemClick('/Admin/teachers')}
-                    icon={<SupervisorAccountOutlinedIcon />}
+                    onClick={() => handleItemClick('Teachers')}
+                    icon={<TeacherIcon />}
                     primaryText="Teachers"
-                    isActive={isItemActive('/Admin/teachers')}
+                    isActive={isItemActive('/Admin/teachers') || activeItem==='Teachers'}
                 />
                 <CustomList
                     to="/Admin/students"
-                    onClick={() => handleItemClick('/Admin/students')}
-                    icon={<PersonOutlineIcon />}
+                    onClick={() => handleItemClick('Students')}
+                    icon={<StudentIcon />}
                     primaryText="Students"
-                    isActive={isItemActive('/Admin/students')}
+                    isActive={isItemActive('/Admin/students') || activeItem==='Students'}
                 />
                 <CustomList
                     to="/Admin/notices"
-                    onClick={() => handleItemClick('/Admin/notices')}
-                    icon={<AnnouncementOutlinedIcon />}
+                    onClick={() => handleItemClick('Notices')}
+                    icon={<NoticesIcon />}
                     primaryText="Notices"
-                    isActive={isItemActive('/Admin/notices')}
+                    isActive={isItemActive('/Admin/notices') || activeItem==='Notices'}
                 />
                 <CustomList
                     to="/Admin/calendar"
-                    onClick={() => handleItemClick('/Admin/calendar')}
+                    onClick={() => handleItemClick('Calendar')}
                     icon={<EditCalendar />}
                     primaryText="Calendar"
-                    isActive={isItemActive('/Admin/calendar')}
+                    isActive={isItemActive('/Admin/calendar') || activeItem==='Calendar'}
                 />
                 <CustomList
                     to="/Admin/complains"
-                    onClick={() => handleItemClick('/Admin/complains')}
-                    icon={<ReportIcon />}
+                    onClick={() => handleItemClick('Complains')}
+                    icon={<ComplainsIcon />}
                     primaryText="Complains"
-                    isActive={isItemActive('/Admin/complains')}
+                    isActive={isItemActive('/Admin/complains') || activeItem==='Complains'}
                 />
             </React.Fragment>
             <Divider sx={{ my: 1 }} />
@@ -91,14 +93,14 @@ const SideBar = () => {
                 <CustomList
                     to="/Admin/profile"
                     onClick={() => handleItemClick('/Admin/profile')}
-                    icon={<AccountCircleOutlinedIcon />}
+                    icon={<ProfileIcon />}
                     primaryText="Profile"
                     isActive={isItemActive('/Admin/profile')}
                 />
                 <CustomList
                     to="/logout"
                     onClick={() => handleItemClick('/logout')}
-                    icon={<ExitToAppIcon />}
+                    icon={<LogoutIcon />}
                     primaryText="Logout"
                     isActive={isItemActive('/logout')}
                 />

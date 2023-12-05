@@ -18,13 +18,15 @@ const CustomList = ({
         background: isActive
           ? 'linear-gradient(to top, #b3ffed, #eefffb)'
           : 'inherit',
+          borderLeft: isActive ? '4px solid #088F8F' : 'none',
+          // paddingLeft: isActive ? '16px' : '16px',
       }}
     >
       <ListItemIcon>
         {React.cloneElement(icon, {
           style: {
             color: isActive ? '#088F8F' : 'inherit',
-            fontSize: isActive ? '28' : '',
+            fontSize: '26',
           },
         })}
       </ListItemIcon>

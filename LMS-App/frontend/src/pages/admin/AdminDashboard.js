@@ -71,7 +71,7 @@ const AdminDashboard = () => {
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
                 <AppBar open={open} position='absolute' sx={{
-                        background: 'linear-gradient(to right, #54ffd7, #a0ffe9, #09a7a7)' // Replace with your desired gradient colors
+                        background: 'linear-gradient(to right, #54ffd7, #a0ffe9, #09a7a7)'
                     }}>
                     <Toolbar sx={{ pr: '24px' }}>
                         <IconButton

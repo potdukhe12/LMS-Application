@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Grid, Box, Button } from '@mui/material';
 import styled from 'styled-components';
 import Students from "../assets/students.svg";
-import { LightPurpleButton } from '../../../../RSL-Solutions/LMS/MERN-School-Management-System-main/frontend/src/components/buttonStyles';
+import { LightPurpleButton } from '../components/buttonStyles';
 
 const Homepage = () => {
     return (

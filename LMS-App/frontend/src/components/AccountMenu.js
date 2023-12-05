@@ -35,8 +35,8 @@ const AccountMenu = () => {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar sx={{ width: 32, height: 32 }}>
-                            {String(currentUser.name).charAt(0)}
+                        <Avatar sx={{ width: 38, height: 38, backgroundColor: 'black' }}>
+                            {String(currentUser.name).charAt(0).toUpperCase()}
                         </Avatar>
                     </IconButton>
                 </Tooltip>
@@ -106,7 +106,7 @@ const styles = {
             display: 'block',
             position: 'absolute',
             top: 0,
-            right: 14,
+            right: 18,
             width: 10,
             height: 10,
             bgcolor: 'background.paper',
