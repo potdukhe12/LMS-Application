@@ -19,7 +19,7 @@ const CustomList = ({
           ? 'linear-gradient(to top, #b3ffed, #eefffb)'
           : 'inherit',
           borderLeft: isActive ? '4px solid #088F8F' : 'none',
-          // paddingLeft: isActive ? '16px' : '16px',
+          paddingLeft: '20px',
       }}
     >
       <ListItemIcon>

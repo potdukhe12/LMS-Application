@@ -74,9 +74,9 @@ const AdminHomePage = () => {
                             <Data start={0} end={feesCollection} duration={1.5} prefix="₹" />                        </StyledPaper>
                     </Grid> */}
                     <Grid item xs={12} md={12} lg={12}>
-                        <StyledNotice sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                        <div sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                             <SeeNotice />
-                        </StyledNotice>
+                        </div>
                     </Grid>
                 </Grid>
             </Container>
@@ -92,7 +92,7 @@ min-height: 140px;
 justify-content: space-around;
 align-items: center;
 text-align: center;
-background: linear-gradient(to bottom, #b4ffee, #54ffd7, #54ffd7, #54ffd7, #09a7a7);  // Change the background on hover
+background: linear-gradient(to bottom, #02aeae, #b4ffee, #54ffd7, #54ffd7, #54ffd7, #09a7a7);  // Change the background on hover
 
 &:hover {
     transition: background 2.5s; 

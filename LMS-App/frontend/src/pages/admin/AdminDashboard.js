@@ -71,7 +71,8 @@ const AdminDashboard = () => {
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
                 <AppBar open={open} position='absolute' sx={{
-                        background: 'linear-gradient(to right, #54ffd7, #a0ffe9, #09a7a7)'
+                        background: 'linear-gradient(to right, #54ffd7, #a0ffe9, #09a7a7)',
+                        // height: '55px'
                     }}>
                     <Toolbar sx={{ pr: '24px' }}>
                         <IconButton
@@ -99,8 +100,9 @@ const AdminDashboard = () => {
                             component="h1"
                             variant="h6"
                             color='#088F8F'
+                            // color='black'
                             noWrap
-                            sx={{ flexGrow: 38, fontWeight: 'normal', fontSize: '16px' }}
+                            sx={{ flexGrow: 40, fontWeight: 'normal', fontSize: '16px' }}
                         >
                             (Admin Dashboard)
                         </Typography>
