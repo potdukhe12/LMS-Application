@@ -62,62 +62,20 @@ const ShowTeachers = () => {
         };
     });
 
-    // const dummyTeachersList = [
-    //     {
-    //         name: 'John Doe',
-    //         teachSubject: 'Math',
-    //         teachSclass: 'Class A',
-    //         teachSclassID: 1,
-    //         id: 1,
-    //     },
-    //     {
-    //         name: 'Jane Smith',
-    //         teachSubject: 'Science',
-    //         teachSclass: 'Class B',
-    //         teachSclassID: 2,
-    //         id: 2,
-    //     },
-    //     // Add more dummy data as needed
-    // ];
-
-    // const [showPopup, setShowPopup] = useState(false);
-    // const [message, setMessage] = useState('');
-
-    // const deleteHandler = (deleteID, address) => {
-    //     setMessage('Sorry, the delete function has been disabled for now.');
-    //     setShowPopup(true);
-    // };
-
-    // const columns = [
-    //     { id: 'name', label: 'Teacher Name', minWidth: 170 },
-    //     { id: 'teachSubject', label: 'Subject', minWidth: 100 },
-    //     { id: 'teachSclass', label: 'Class', minWidth: 170 },
-    // ];
-
-    // const rows = dummyTeachersList.map((teacher) => {
-    //     return {
-    //         name: teacher.name,
-    //         teachSubject: teacher.teachSubject,
-    //         teachSclass: teacher.teachSclass,
-    //         teachSclassID: teacher.teachSclassID,
-    //         id: teacher.id,
-    //     };
-    // });
-
     const TeachersButtonHaver = ({ row }) => {
         return (
             <>
+                <BlueButton 
+                    variant="contained" 
+                    onClick={() => navigate(`/Admin/teachers/teacher/${row.id}`)}
+                    sx={{ marginRight: '30px' }}>
+                    View
+                </BlueButton>
                 <Tooltip title="Remove Teacher" sx={{ marginRight: '15px' }}>
                     <IconButton onClick={() => deleteHandler(row.id, 'Teacher')}>
                         <PersonRemoveIcon color="error" />
                     </IconButton>
                 </Tooltip>
-                <BlueButton 
-                    variant="contained" 
-                    onClick={() => navigate(`/Admin/teachers/teacher/${row.id}`)}
-                    >
-                    View
-                </BlueButton>
             </>
         );
     };

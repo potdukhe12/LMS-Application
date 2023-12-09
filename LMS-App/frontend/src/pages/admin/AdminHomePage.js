@@ -34,21 +34,31 @@ const AdminHomePage = () => {
     const numberOfClasses = sclassesList && sclassesList.length;
     const numberOfTeachers = teachersList && teachersList.length;   
 
-    // const feesCollection = 29000;
-
     return (
         <>
             <Container maxWidth="lg" sx={{ mt: 0, mb: 0 }}>
                 <Grid container spacing={3}>
-                    <Grid item xs={12} md={4} lg={4}>
-                        <StyledPaper onClick={() => navigate(`/Admin/students`)}>
+                    <Grid item xs={6} md={4} lg={4}>
+                        <StyledPaper 
+                            onClick={() => navigate(`/Admin/students`)} 
+                            sx={{                
+                                '@media (max-width: 600px)': {
+                                    flexDirection: 'column',
+                                },
+                            }}>
                             <img src={Students} alt="Students" />
                             <Title>Total Students</Title>
                             <Data start={0} end={numberOfStudents} duration={2.5} />
                         </StyledPaper>
                     </Grid>
-                    <Grid item xs={12} md={4} lg={4}>
-                        <StyledPaper onClick={() => navigate(`/Admin/classes`)}>
+                    <Grid item xs={6} md={4} lg={4}>
+                        <StyledPaper 
+                            onClick={() => navigate(`/Admin/classes`)}
+                            sx={{                
+                                '@media (max-width: 600px)': {
+                                    flexDirection: 'column',
+                                },
+                            }}>
                             <img src={Classes} alt="Classes" />
                             <Title>
                                 Total Classes
@@ -65,14 +75,6 @@ const AdminHomePage = () => {
                             <Data start={0} end={numberOfTeachers} duration={2.5} />
                         </StyledPaper>
                     </Grid>
-                    {/* <Grid item xs={12} md={4} lg={3}>
-                        <StyledPaper>
-                            <img src={Fees} alt="Fees" />
-                            <Title>
-                                Fees Collection
-                            </Title>
-                            <Data start={0} end={feesCollection} duration={1.5} prefix="₹" />                        </StyledPaper>
-                    </Grid> */}
                     <Grid item xs={12} md={12} lg={12}>
                         <div sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                             <SeeNotice />
@@ -93,28 +95,13 @@ justify-content: space-around;
 align-items: center;
 text-align: center;
 background: linear-gradient(to bottom, #02aeae, #b4ffee, #54ffd7, #54ffd7, #54ffd7, #09a7a7);  // Change the background on hover
+cursor: pointer; 
 
 &:hover {
-    transition: background 2.5s; 
-    cursor: pointer; 
     background: linear-gradient(to bottom, #b4ffee, #03ffc5);
+    border-radius: 15px;
+    transition: background 0.5s ease, border-radius 0.3s ease;
 }`;
-
-const StyledNotice = styled(Paper)`
-padding: 16px;
-display: flex;
-min-height: 140px;
-justify-content: space-around;
-align-items: center;
-text-align: center;
-background: linear-gradient(to bottom, #b4ffee, #54ffd7, #54ffd7, #54ffd7, #09a7a7);  // Change the background on hover
-
-// &:hover {
-//     transition: background 2.5s; 
-//     cursor: pointer; 
-//     background: linear-gradient(to bottom, #b4ffee, #03ffc5);
-// }`
-;
 
 const Title = styled.p`
   font-size: 1.25rem;

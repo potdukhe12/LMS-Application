@@ -61,65 +61,26 @@ const ShowClasses = () => {
     };
   })
 
-  /////////////////////
-
-    // // Dummy data to simulate the response from Redux store
-    // const dummyData = [
-    //   {
-    //     id: '1',
-    //     sclassName: 'Class A',
-    //   },
-    //   {
-    //     id: '2',
-    //     sclassName: 'Class B',
-    //   },
-    // ];
-  
-    // // Simulate loading and error states
-    // const loading = false;
-    // const error = null;
-    // const getresponse = false;
-    // const getresponse = true;
-  
-    // const [showPopup, setShowPopup] = useState(false);
-    // const [message, setMessage] = useState("");
-  
-    // const deleteHandler = (deleteID, address) => {
-    //   setMessage("Sorry, the delete function has been disabled for now.")
-    //   setShowPopup(true);
-    // }
-  
-    // const sclassColumns = [
-    //   { id: 'name', label: 'Class Name', minWidth: 170 },
-    // ];
-  
-    // const sclassRows = dummyData.map((sclass) => {
-    //   return {
-    //     name: sclass.sclassName,
-    //     id: sclass.id,
-    //   };
-    // });
-
-    ///////////////////////
-
   const SclassButtonHaver = ({ row }) => {
     const actions = [
       { icon: <PostAddIcon />, name: 'Add Subjects', action: () => navigate("/Admin/addsubject/" + row.id) },
       { icon: <PersonAddAlt1Icon />, name: 'Add Student', action: () => navigate("/Admin/class/addstudents/" + row.id) },
     ];
     return (
+      <>
       <ButtonContainer>
+        <ActionMenu actions={actions} />
+        <BlueButton variant="contained"
+          onClick={() => navigate("/Admin/classes/class/" + row.id)}>
+          View
+        </BlueButton>
         <Tooltip title="Delete">
           <IconButton onClick={() => deleteHandler(row.id, "Sclass")} color="secondary">
             <DeleteIcon color="error" />
           </IconButton>
         </Tooltip>
-        <BlueButton variant="contained"
-          onClick={() => navigate("/Admin/classes/class/" + row.id)}>
-          View
-        </BlueButton>
-        <ActionMenu actions={actions} />
       </ButtonContainer>
+      </>
     );
   };
 
@@ -176,19 +137,6 @@ const ShowClasses = () => {
       </>
     );
   }
-
-  // const actions = [
-  //   {
-  //     icon: <AddCardIcon color="primary" />, 
-  //     name: 'Add New Class',
-  //     action: () => navigate("/Admin/addclass")
-  //   },
-  //   {
-  //     icon: <DeleteIcon color="error" />, 
-  //     name: 'Delete All Classes',
-  //     // action: () => deleteHandler(adminID, "Sclasses")
-  //   },
-  // ];
 
   return (
     <>

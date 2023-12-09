@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserDetails, updateUser } from '../../../redux/userRelated/userHandle';
 import { useNavigate, useParams } from 'react-router-dom'
 import { getSubjectList } from '../../../redux/sclassRelated/sclassHandle';
-import { Box, Button, Collapse, IconButton, Table, TableBody, TableHead, Typography, Tab, Paper, BottomNavigation, BottomNavigationAction, Container } from '@mui/material';
+import { Box, Button, Collapse, IconButton, Table, TableBody, TableHead, Typography, Tab, Paper, BottomNavigation, BottomNavigationAction, Container, Grid, TextField } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
@@ -369,28 +369,59 @@ const ViewStudent = () => {
                 </Button>
                 <Collapse in={showTab} timeout="auto" unmountOnExit>
                     <div className="register">
-                        <form className="registerForm" onSubmit={submitHandler}>
-                            <span className="registerTitle">Edit Details</span>
-                            <label>Name</label>
-                            <input className="registerInput" type="text" placeholder="Enter user's name..."
-                                value={name}
-                                onChange={(event) => setName(event.target.value)}
-                                autoComplete="name" required />
-
-                            <label>Roll Number</label>
-                            <input className="registerInput" type="number" placeholder="Enter user's Roll Number..."
-                                value={rollNum}
-                                onChange={(event) => setRollNum(event.target.value)}
-                                required />
-
-                            <label>Password</label>
-                            <input className="registerInput" type="password" placeholder="Enter user's password..."
-                                value={password}
-                                onChange={(event) => setPassword(event.target.value)}
-                                autoComplete="new-password" />
-
-                            <button className="registerButton" type="submit" >Update</button>
-                        </form>
+                    <form onSubmit={submitHandler}>
+            <Box mb={2}>
+                <Typography variant="h6">Edit Details</Typography>
+            </Box>
+            <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="Name"
+                        variant="outlined"
+                        value={name}
+                        onChange={(event) => setName(event.target.value)}
+                        required
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="Roll Number"
+                        variant="outlined"
+                        type="number"
+                        value={rollNum}
+                        onChange={(event) => setRollNum(event.target.value)}
+                        required
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="Password"
+                        variant="outlined"
+                        type="password"
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                        autoComplete="new-password"
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <Box display="flex" justifyContent="flex-end">
+                        <Button variant="contained" color="primary" type="submit" 
+                        // disabled={loader}
+                        >
+                            {/* {loader ? (
+                                <CircularProgress size={24} color="inherit" />
+                            ) : ( */}
+                                'Update'
+                            {/* )} */}
+                        </Button>
+                    </Box>
+                </Grid>
+            </Grid>
+            <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
+        </form>
                     </div>
                 </Collapse>
             </div>
@@ -409,7 +440,10 @@ const ViewStudent = () => {
                     <Box sx={{ width: '100%', typography: 'body1', }} >
                         <TabContext value={value}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                <TabList onChange={handleChange} sx={{ position: 'fixed', width: '100%', bgcolor: 'background.paper', zIndex: 1 }}>
+                                <TabList onChange={handleChange} 
+                                    sx={{ 
+                                        // position: 'fixed', 
+                                        width: '100%', bgcolor: 'background.paper', zIndex: 1 }}>
                                     <Tab label="Details" value="1" />
                                     <Tab label="Attendance" value="2" />
                                     <Tab label="Marks" value="3" />

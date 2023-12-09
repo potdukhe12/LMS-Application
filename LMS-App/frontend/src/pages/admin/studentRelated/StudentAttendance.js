@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { getUserDetails } from '../../../redux/userRelated/userHandle';
 import { getSubjectList } from '../../../redux/sclassRelated/sclassHandle';
 import { updateStudentFields } from '../../../redux/studentRelated/studentHandle';
-
 import {
     Box, InputLabel,
     MenuItem, Select,
@@ -34,11 +33,11 @@ const StudentAttendance = ({ situation }) => {
     useEffect(() => {
         if (situation === "Student") {
             setStudentID(params.id);
-            const stdID = params.id
+            const stdID = params.id;
             dispatch(getUserDetails(stdID, "Student"));
         }
         else if (situation === "Subject") {
-            const { studentID, subjectID } = params
+            const { studentID, subjectID } = params;
             setStudentID(studentID);
             dispatch(getUserDetails(studentID, "Student"));
             setChosenSubName(subjectID);

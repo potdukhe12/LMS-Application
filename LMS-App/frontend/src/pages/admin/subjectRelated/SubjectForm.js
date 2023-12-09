@@ -137,7 +137,7 @@ const SubjectForm = () => {
                                         color="primary"
                                         onClick={handleAddSubject}
                                     >
-                                        Add Subject
+                                        Add More Subject
                                     </Button>
                                 ) : (
                                     <Button
@@ -169,7 +169,7 @@ const SubjectForm = () => {
     );
 }
 
-export default SubjectForm
+export default SubjectForm;
 
 const styles = {
     inputField: {

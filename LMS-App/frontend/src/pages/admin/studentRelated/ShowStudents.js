@@ -44,8 +44,8 @@ const ShowStudents = () => {
 
     const studentColumns = [
         { id: 'name', label: 'Name', minWidth: 170 },
-        { id: 'rollNum', label: 'Roll Number', minWidth: 100 },
-        { id: 'sclassName', label: 'Class', minWidth: 170 },
+        { id: 'rollNum', label: 'Roll No.', minWidth: 100 },
+        { id: 'sclassName', label: 'Class', minWidth: 150 },
     ]
 
     const studentRows = studentsList && studentsList.length > 0 && studentsList.map((student) => {
@@ -56,87 +56,6 @@ const ShowStudents = () => {
             id: student._id,
         };
     })
-
-    // // Dummy data for students
-    // const dummyStudentsList = [
-    //     {
-    //         name: 'John Doe',
-    //         rollNum: '101',
-    //         sclassName: 'Class A',
-    //         id: 1,
-    //     },
-    //     {
-    //         name: 'Jane Smith',
-    //         rollNum: '102',
-    //         sclassName: 'Class B',
-    //         id: 2,
-    //     },
-    //     {
-    //         name: 'Bob Johnson',
-    //         rollNum: '103',
-    //         sclassName: 'Class A',
-    //         id: 3,
-    //     },
-    //     {
-    //         name: 'Alice Williams',
-    //         rollNum: '104',
-    //         sclassName: 'Class B',
-    //         id: 4,
-    //     },
-    //     {
-    //         name: 'Charlie Brown',
-    //         rollNum: '105',
-    //         sclassName: 'Class A',
-    //         id: 5,
-    //     },
-    //     {
-    //         name: 'Eva Davis',
-    //         rollNum: '106',
-    //         sclassName: 'Class B',
-    //         id: 6,
-    //     },
-    //     {
-    //         name: 'Frank Martin',
-    //         rollNum: '107',
-    //         sclassName: 'Class A',
-    //         id: 7,
-    //     },
-    //     {
-    //         name: 'Grace Wilson',
-    //         rollNum: '108',
-    //         sclassName: 'Class B',
-    //         id: 8,
-    //     },
-    //     {
-    //         name: 'Henry Turner',
-    //         rollNum: '109',
-    //         sclassName: 'Class A',
-    //         id: 9,
-    //     },
-    //     {
-    //         name: 'Ivy Rodriguez',
-    //         rollNum: '110',
-    //         sclassName: 'Class B',
-    //         id: 10,
-    //     },
-    // ];
-    
-
-    // const [showPopup, setShowPopup] = React.useState(false);
-    // const [message, setMessage] = React.useState("");
-
-    // const deleteHandler = (deleteID, address) => {
-    //     setMessage("Sorry, the delete function has been disabled for now.");
-    //     setShowPopup(true);
-    // }
-
-    // const studentColumns = [
-    //     { id: 'name', label: 'Name', minWidth: 170 },
-    //     { id: 'rollNum', label: 'Roll Number', minWidth: 100 },
-    //     { id: 'sclassName', label: 'Class', minWidth: 170 },
-    // ]
-
-    // const studentRows = dummyStudentsList;
 
     const StudentButtonHaver = ({ row }) => {
         const options = ['Take Attendance', 'Provide Marks'];
@@ -178,15 +97,16 @@ const ShowStudents = () => {
         };
         return (
             <>
+                <BlueButton variant="contained"
+                    onClick={() => navigate("/Admin/students/student/" + row.id)}
+                    sx={{ marginRight: '20px' }}>
+                    View
+                </BlueButton>
                 <Tooltip title="Delete Student" sx={{marginRight: '25px'}}>
                     <IconButton onClick={() => deleteHandler(row.id, "Student")}>
                         <PersonRemoveIcon color="error" />
                     </IconButton>
                 </Tooltip>
-                <BlueButton variant="contained"
-                    onClick={() => navigate("/Admin/students/student/" + row.id)}>
-                    View
-                </BlueButton>
                 <React.Fragment>
                     <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button">
                         <Button onClick={handleClick}>{options[selectedIndex]}</Button>
@@ -225,9 +145,12 @@ const ShowStudents = () => {
                                             {options.map((option, index) => (
                                                 <MenuItem
                                                     key={option}
-                                                    disabled={index === 2}
-                                                    selected={index === selectedIndex}
-                                                    onClick={(event) => handleMenuItemClick(event, index)}
+                                                    // disabled={index === 2}
+                                                    // selected={index === selectedIndex}
+                                                    onClick={(event) => { 
+                                                        handleMenuItemClick(event, index);
+                                                        // handleClick();
+                                                    }}
                                                 >
                                                     {option}
                                                 </MenuItem>
@@ -242,17 +165,6 @@ const ShowStudents = () => {
             </>
         );
     };
-
-    // const actions = [
-    //     {
-    //         icon: <PersonAddAlt1Icon color="primary" />, name: 'Add New Student',
-    //         action: () => navigate("/Admin/addstudents"),
-    //     },
-    //     {
-    //         icon: <PersonRemoveIcon color="error" />, name: 'Delete All Students',
-    //         action: () => deleteHandler(1, "Students"), // Replace 1 with the actual user ID
-    //     },
-    // ];
 
     return (
         <>

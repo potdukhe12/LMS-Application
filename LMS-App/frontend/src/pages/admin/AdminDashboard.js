@@ -130,81 +130,66 @@ const AdminDashboard = () => {
                     </List>
                 </Drawer>
                 <Box component="main" sx={styles.boxStyled}>
-                    <Toolbar />
-                    <Routes>
-                        {/* Admin */}
-                        <Route path="/" element={<AdminHomePage />} />
-                        <Route path='*' element={<Navigate to="/" />} />
-                        <Route path="/Admin/dashboard" element={<AdminHomePage />} />
-                        <Route path="/Admin/profile" element={<AdminProfile />} />
-                        <Route path="/Admin/complains" element={<SeeComplains />} />
+                    <Box sx={{                
+                        '@media (max-width: 600px)': {
+                            display: open ? 'none' : 'block',
+                        },
+                    }}>
+                        <Toolbar />
+                        <Routes>
+                            {/* Admin */}
+                            <Route path="/" element={<AdminHomePage />} />
+                            <Route path='*' element={<Navigate to="/" />} />
+                            <Route path="/Admin/dashboard" element={<AdminHomePage />} />
+                            <Route path="/Admin/profile" element={<AdminProfile />} />
+                            <Route path="/Admin/complains" element={<SeeComplains />} />
 
-                        {/* Notice */}
-                        <Route path="/Admin/addnotice" element={<AddNotice />} />
-                        <Route path="/Admin/notices" element={<ShowNotices />} />
+                            {/* Notice */}
+                            <Route path="/Admin/addnotice" element={<AddNotice />} />
+                            <Route path="/Admin/notices" element={<ShowNotices />} />
 
-                        {/* Subject */}
-                        <Route path="/Admin/subjects" element={<ShowSubjects />} />
-                        <Route path="/Admin/subjects/subject/:classID/:subjectID" element={<ViewSubject />} />
-                        <Route path="/Admin/subjects/chooseclass" element={<ChooseClass situation="Subject" />} />
+                            {/* Subject */}
+                            <Route path="/Admin/subjects" element={<ShowSubjects />} />
+                            <Route path="/Admin/subjects/subject/:classID/:subjectID" element={<ViewSubject />} />
+                            <Route path="/Admin/subjects/chooseclass" element={<ChooseClass situation="Subject" />} />
 
-                        <Route path="/Admin/addsubject/:id" element={<SubjectForm />} />
-                        <Route path="/Admin/class/subject/:classID/:subjectID" element={<ViewSubject />} />
+                            <Route path="/Admin/addsubject/:id" element={<SubjectForm />} />
+                            <Route path="/Admin/class/subject/:classID/:subjectID" element={<ViewSubject />} />
 
-                        <Route path="/Admin/subject/student/attendance/:studentID/:subjectID" element={<StudentAttendance situation="Subject" />} />
-                        <Route path="/Admin/subject/student/marks/:studentID/:subjectID" element={<StudentExamMarks situation="Subject" />} />
+                            <Route path="/Admin/subject/student/attendance/:studentID/:subjectID" element={<StudentAttendance situation="Subject" />} />
+                            <Route path="/Admin/subject/student/marks/:studentID/:subjectID" element={<StudentExamMarks situation="Subject" />} />
 
-                        {/* Class */}
-                        <Route path="/Admin/addclass" element={<AddClass />} />
-                        <Route path="/Admin/classes" element={<ShowClasses />} />
-                        <Route path="/Admin/classes/class/:id" element={<ClassDetails />} />
-                        <Route path="/Admin/class/addstudents/:id" element={<AddStudent situation="Class" />} />
+                            {/* Class */}
+                            <Route path="/Admin/addclass" element={<AddClass />} />
+                            <Route path="/Admin/classes" element={<ShowClasses />} />
+                            <Route path="/Admin/classes/class/:id" element={<ClassDetails />} />
+                            <Route path="/Admin/class/addstudents/:id" element={<AddStudent situation="Class" />} />
 
-                        {/* Student */}
-                        <Route path="/Admin/addstudents" element={<AddStudent situation="Student" />} />
-                        <Route path="/Admin/students" element={<ShowStudents />} />
-                        <Route path="/Admin/students/student/:id" element={<ViewStudent />} />
-                        <Route path="/Admin/students/student/attendance/:id" element={<StudentAttendance situation="Student" />} />
-                        <Route path="/Admin/students/student/marks/:id" element={<StudentExamMarks situation="Student" />} />
+                            {/* Student */}
+                            <Route path="/Admin/addstudents" element={<AddStudent situation="Student" />} />
+                            <Route path="/Admin/students" element={<ShowStudents />} />
+                            <Route path="/Admin/students/student/:id" element={<ViewStudent />} />
+                            <Route path="/Admin/students/student/attendance/:id" element={<StudentAttendance situation="Student" />} />
+                            <Route path="/Admin/students/student/marks/:id" element={<StudentExamMarks situation="Student" />} />
 
-                        {/* Teacher */}
-                        <Route path="/Admin/teachers" element={<ShowTeachers />} />
-                        <Route path="/Admin/teachers/teacher/:id" element={<TeacherDetails />} />
-                        <Route path="/Admin/teachers/chooseclass" element={<ChooseClass situation="Teacher" />} />
-                        <Route path="/Admin/teachers/choosesubject/:id" element={<ChooseSubject situation="Norm" />} />
-                        <Route path="/Admin/teachers/choosesubject/:classID/:teacherID" element={<ChooseSubject situation="Teacher" />} />
-                        <Route path="/Admin/teachers/addteacher/:id" element={<AddTeacher />} />
-                        
-                        <Route path="/Admin/calendar" element={<CalendarComponent />} />
+                            {/* Teacher */}
+                            <Route path="/Admin/teachers" element={<ShowTeachers />} />
+                            <Route path="/Admin/teachers/teacher/:id" element={<TeacherDetails />} />
+                            <Route path="/Admin/teachers/chooseclass" element={<ChooseClass situation="Teacher" />} />
+                            <Route path="/Admin/teachers/choosesubject/:id" element={<ChooseSubject situation="Norm" />} />
+                            <Route path="/Admin/teachers/choosesubject/:classID/:teacherID" element={<ChooseSubject situation="Teacher" />} />
+                            <Route path="/Admin/teachers/addteacher/:id" element={<AddTeacher />} />
+                            
+                            <Route path="/Admin/calendar" element={<CalendarComponent />} />
 
-                        <Route path="/logout" element={<Logout />} />
-                    </Routes>
-                </Box>
-                {/* <Box component="main" sx={styles.sideBoxStyled}>
-                    <Toolbar />
-                    <Typography
-                        component="h1"
-                        variant="h6"
-                        color="inherit"
-                        noWrap
-                        sx={{ flexGrow: 1, fontWeight: 'bold' }}
-                        >
-                            Notice Section
-                    </Typography>
-                    <Box sx={{ marginTop: '20px' }}>
-                        <Calendar
-                            onChange={handleDateChange}
-                            value={selectedDate}
-                            className="custom-calendar"
-                        />
+                            <Route path="/logout" element={<Logout />} />
+                        </Routes>
                     </Box>
-                </Box> */}
+                </Box>
             </Box>
         </>
     );
 }
-
-export default AdminDashboard
 
 const styles = {
     boxStyled: {
@@ -215,7 +200,10 @@ const styles = {
         flexGrow: 1,
         // height: '85vh',
         overflow: 'auto',
-        margin: '50px 50px 0px 50px', 
+        margin: '50px 50px 0px 50px',
+        '@media (max-width: 600px)': {
+            margin: '25px 10px 0px 10px',
+        }, 
     },
     sideBoxStyled: {
         backgroundColor: (theme) =>
@@ -247,3 +235,5 @@ const styles = {
         },
     },
 }
+
+export default AdminDashboard;

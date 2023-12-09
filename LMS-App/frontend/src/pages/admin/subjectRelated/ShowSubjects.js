@@ -64,126 +64,19 @@ const ShowSubjects = () => {
     const SubjectsButtonHaver = ({ row }) => {
         return (
             <>
+                <BlueButton variant="contained"
+                    onClick={() => navigate(`/Admin/subjects/subject/${row.sclassID}/${row.id}`)}
+                    sx={{ marginRight: '30px' }}>
+                    View
+                </BlueButton>
                 <Tooltip title="Delete">
                     <IconButton onClick={() => deleteHandler(row.id, "Subject")}>
                         <DeleteIcon color="error" />
                     </IconButton>
                 </Tooltip>
-                <BlueButton variant="contained"
-                    onClick={() => navigate(`/Admin/subjects/subject/${row.sclassID}/${row.id}`)}>
-                    View
-                </BlueButton>
             </>
         );
     };
-
-    // const actions = [
-    //     {
-    //         icon: <PostAddIcon color="primary" />, name: 'Add New Subject',
-    //         action: () => navigate("/Admin/subjects/chooseclass")
-    //     },
-    //     {
-    //         icon: <DeleteIcon color="error" />, name: 'Delete All Subjects',
-    //         action: () => deleteHandler(currentUser._id, "Subjects")
-    //     }
-    // ];
-
-    ///////////////////
-
-    // const loading = false;
-    // const error = null;
-    // const response = false;
-    // // const response = true;
-
-    // const [subjectsList, setSubjectsList] = useState([
-    //     {
-    //         _id: '1',
-    //         subName: 'Math',
-    //         sessions: 20,
-    //         sclassName: {
-    //             _id: '1',
-    //             sclassName: 'Class A',
-    //         },
-    //     },
-    //     {
-    //         _id: '2',
-    //         subName: 'Science',
-    //         sessions: 18,
-    //         sclassName: {
-    //             _id: '2',
-    //             sclassName: 'Class B',
-    //         },
-    //     },
-    //     {
-    //         _id: '3',
-    //         subName: 'History',
-    //         sessions: 15,
-    //         sclassName: {
-    //             _id: '1',
-    //             sclassName: 'Class A',
-    //         },
-    //     },
-    // ]);
-
-    // const [showPopup, setShowPopup] = useState(false);
-    // const [message, setMessage] = useState('');
-
-    // const deleteHandler = (deleteID, address) => {
-    //     setMessage('Sorry, the delete function has been disabled for now.');
-    //     setShowPopup(true);
-
-    //     // You can add actual delete functionality here if needed
-    //     // For now, we're just displaying a message
-    // };
-
-    // const subjectColumns = [
-    //     { id: 'subName', label: 'Subject Name', minWidth: 170 },
-    //     { id: 'sessions', label: 'Sessions', minWidth: 170 },
-    //     { id: 'sclassName', label: 'Class', minWidth: 170 },
-    // ];
-
-    // const subjectRows = subjectsList.map((subject) => {
-    //     return {
-    //         subName: subject.subName,
-    //         sessions: subject.sessions,
-    //         sclassName: subject.sclassName.sclassName,
-    //         sclassID: subject.sclassName._id,
-    //         id: subject._id,
-    //     };
-    // });
-
-    // const SubjectsButtonHaver = ({ row }) => {
-    //     return (
-    //         <>
-    //             <Tooltip title="Delete Subject" sx={{ marginRight: '15px' }}>
-    //                 <IconButton onClick={() => deleteHandler(row.id, 'Subject')}>
-    //                     <DeleteIcon color="error" />
-    //                 </IconButton>
-    //             </Tooltip>
-    //             <BlueButton
-    //                 variant="contained"
-    //                 onClick={() =>
-    //                     navigate(`/Admin/subjects/subject/${row.sclassID}/${row.id}`)
-    //                 }
-    //             >
-    //                 View
-    //             </BlueButton>
-    //         </>
-    //     );
-    // };
-
-    // const actions = [
-    //     {
-    //         icon: <PostAddIcon color="primary" />,
-    //         name: 'Add New Subject',
-    //         action: () => navigate('/Admin/subjects/chooseclass'),
-    //     },
-    //     {
-    //         icon: <DeleteIcon color="error" />,
-    //         name: 'Delete All Subjects',
-    //         // action: () => deleteHandler(currentUser._id, 'Subjects'),
-    //     },
-    // ];
 
     return (
         <>

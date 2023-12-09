@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Button, TextField, Grid, Box, Typography, CircularProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getSubjectDetails } from '../../../redux/sclassRelated/sclassHandle';
 import Popup from '../../../components/Popup';
 import { registerUser } from '../../../redux/userRelated/userHandle';
 import { underControl } from '../../../redux/userRelated/userSlice';
-import { CircularProgress } from '@mui/material';
 
 const AddTeacher = () => {
   const params = useParams()
@@ -61,46 +61,77 @@ const AddTeacher = () => {
 
   return (
     <div>
-      <div className="register">
-        <form className="registerForm" onSubmit={submitHandler}>
-          <span className="registerTitle">Add Teacher</span>
-          <br />
-          <label>
-            Subject : {subjectDetails && subjectDetails.subName}
-          </label>
-          <label>
-            Class : {subjectDetails && subjectDetails.sclassName && subjectDetails.sclassName.sclassName}
-          </label>
-          <label>Name</label>
-          <input className="registerInput" type="text" placeholder="Enter teacher's name..."
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            autoComplete="name" required />
-
-          <label>Email</label>
-          <input className="registerInput" type="email" placeholder="Enter teacher's email..."
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            autoComplete="email" required />
-
-          <label>Password</label>
-          <input className="registerInput" type="password" placeholder="Enter teacher's password..."
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            autoComplete="new-password" required />
-
-          <button className="registerButton" type="submit" disabled={loader}>
-            {loader ? (
-              <CircularProgress size={24} color="inherit" />
-            ) : (
-              'Register'
-            )}
-          </button>
-        </form>
-      </div>
+      <form onSubmit={submitHandler}>
+        <Box mb={2}>
+          <Typography variant="h6">Add Teacher</Typography>
+        </Box>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <TextField
+              fullWidth
+              label="Name"
+              variant="outlined"
+              placeholder="Enter teacher's name..."
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              autoComplete="name"
+              required
+              sx={styles.inputField}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              fullWidth
+              label="Email"
+              variant="outlined"
+              placeholder="Enter teacher's email..."
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              autoComplete="email"
+              required
+              sx={styles.inputField}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              fullWidth
+              label="Password"
+              variant="outlined"
+              placeholder="Enter teacher's password..."
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              autoComplete="new-password"
+              required
+              sx={styles.inputField}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Box display="flex" justifyContent="flex-end">
+              <Button variant="contained" color="primary" type="submit" disabled={loader} sx={styles.inputField}>
+                {loader ? (
+                  <CircularProgress size={24} color="inherit" />
+                ) : (
+                  'Register'
+                )}
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
+      </form>
       <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
     </div>
   )
 }
 
-export default AddTeacher
+export default AddTeacher;
+
+const styles = {
+  inputField: {
+    '& .MuiInputLabel-root': {
+      color: '#838080',
+    },
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#838080',
+    },
+  },
+};
