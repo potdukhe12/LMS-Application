@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Paper } from '@mui/material'
+import { Container, Grid, Paper } from '@mui/material'
 import SeeNotice from '../../components/SeeNotice';
 import Students from "../../assets/img1.png";
 import Classes from "../../assets/img2.png";

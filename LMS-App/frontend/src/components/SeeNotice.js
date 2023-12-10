@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllNotices } from '../redux/noticeRelated/noticeHandle';
 import NoticeTile from './NoticeTile';
-import { Box, Grid, Paper } from '@mui/material';
+import { Box } from '@mui/material';
 
 const SeeNotice = () => {
   const dispatch = useDispatch();

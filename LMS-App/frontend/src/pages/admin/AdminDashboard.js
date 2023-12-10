@@ -56,11 +56,11 @@ const AdminDashboard = () => {
     const [open, setOpen] = useState(window.innerWidth >= 600);
     // to check if application is opened in mobile devices
 
-    const [selectedDate, setSelectedDate] = useState(new Date()); // State to track selected date
+    // const [selectedDate, setSelectedDate] = useState(new Date()); // State to track selected date
 
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-    };
+    // const handleDateChange = (date) => {
+    //     setSelectedDate(date);
+    // };
 
     const toggleDrawer = () => {
         setOpen(!open);
