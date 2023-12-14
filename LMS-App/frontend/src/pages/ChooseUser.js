@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../redux/userRelated/userHandle';
 import Popup from '../components/Popup';
+import bgImage from '../assets/bg4.jpg';
 
 const ChooseUser = ({ visitor }) => {
   const dispatch = useDispatch()
@@ -83,8 +84,8 @@ const ChooseUser = ({ visitor }) => {
 
   return (
     <StyledContainer>
-      <Container>
-        <Grid container spacing={2} justifyContent="center">
+      <Container sx={{padding: '3rem'}}>
+        <Grid container spacing={4} justifyContent="center">
           <Grid item xs={12} sm={6} md={4}>
             <div onClick={() => navigateHandler("Admin")}>
               <StyledPaper elevation={3}>
@@ -146,28 +147,35 @@ const ChooseUser = ({ visitor }) => {
 export default ChooseUser;
 
 const StyledContainer = styled.div`
-  background: linear-gradient(to bottom, #411d70, #7FFFD4);
+  // background: linear-gradient(to bottom, #411d70, #7FFFD4);
+  // background: url(${bgImage});
+  background: linear-gradient(rgb(255, 255, 255, 0.5), rgb(255, 255, 255, 0.5)), url(${bgImage});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  // align-items: center;
-  padding: 3rem;
+  align-items: center;
+  // padding: 1rem;
   // padding-top: 10vh;
   @media (max-width: 768px) {
-    max-height: 180vh;
+    min-height: 190vh;
+    // padding-top: 5vh;
   }
 `;
 
 const StyledPaper = styled(Paper)`
   padding: 20px;
   text-align: center;
-  background-color: #1f1f38;
-  color:rgba(255, 255, 255, 0.6);
   cursor:pointer;
+  opacity: 0.9;
 
+  background: linear-gradient(135deg, #EDEDED, #ffffff);
   &:hover {
-    background-color: #088F8F;
-    color:white;
+    background: linear-gradient(135deg, #088f8f, #1f1f38);
+    color: white;
+    transition: background-color 0.3s ease, color 0.8s ease;
   }
 `;
 

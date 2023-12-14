@@ -116,7 +116,7 @@ const AdminDashboard = () => {
                             variant="h6"
                             color="white"
                             noWrap
-                            sx={{ flexGrow: 1, marginLeft: '14px', fontWeight: 'bold' }}
+                            sx={{ flexGrow: 1, marginLeft: '16px', fontWeight: 'bold' }}
                         >
                             Menu
                         </Typography>

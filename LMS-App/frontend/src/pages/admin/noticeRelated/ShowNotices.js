@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {
-    Box, IconButton, Button, Tooltip
+    Box, IconButton, Button, Tooltip, Grid
 } from '@mui/material';
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import { getAllNotices } from '../../../redux/noticeRelated/noticeHandle';
 import { deleteUser } from '../../../redux/userRelated/userHandle';
 import { useDispatch, useSelector } from 'react-redux';
+import NoticeTile from '../../../components/NoticeTile';
+import NoticeTile2 from '../../../components/NoticeTile2';
 
 const ShowNotices = () => {
 
@@ -35,9 +37,9 @@ const ShowNotices = () => {
     }
 
     const noticeColumns = [
-        { id: 'title', label: 'Title', minWidth: 170 },
-        { id: 'details', label: 'Details', minWidth: 100 },
-        { id: 'date', label: 'Date', minWidth: 170 },
+        { id: 'title', label: 'Title', minWidth: 120 },
+        { id: 'details', label: 'Details', minWidth: 150 },
+        { id: 'date', label: 'Date', minWidth: 170, align: 'center' },
     ];
 
     const noticeRows = noticesList && noticesList.length > 0 && noticesList.map((notice) => {
@@ -78,27 +80,32 @@ const ShowNotices = () => {
                         </Box>
                         :
                         <Box sx={{ width: '100%', overflow: 'hidden' }}>
-                            {
-                                // Array.isArray(dummyNoticesList) && dummyNoticesList.length > 0 &&
+                            {/* {
                                 Array.isArray(noticesList) && noticesList.length > 0 &&
                                 <TableTemplate buttonHaver={NoticeButtonHaver} columns={noticeColumns} rows={noticeRows} />
-                            }
+                            } */}
+                            <Grid container spacing={2}>
+                                {
+                                    Array.isArray(noticesList) && noticesList.length > 0 &&
+                                    <NoticeTile2 buttonHaver={NoticeButtonHaver} columns={noticeColumns} rows={noticeRows} />
+                                }
+                            </Grid>
 
                             {/* ////////////////////////// */}
             
                             {/* <SpeedDialTemplate actions={actions} /> */}
             
                             <Box sx={{ display: 'flex', justifyContent: 'flex-end', margin: '16px' }}>
-                            <Button variant="contained" sx={{marginRight: '10px'}} onClick={() => navigate("/Admin/addnotice")}>
-                                <NoteAddIcon sx={{marginRight: '5px'}}/>
-                                Add New Notice
-                            </Button>
-                            <Button variant="contained" color="error"
-                                    //  onClick={() => deleteHandler(adminID, "Sclasses")}
-                                >
-                                <DeleteIcon sx={{marginRight: '5px'}}/>
-                                Delete All Notices
-                            </Button>
+                                <Button variant="contained" sx={{marginRight: '10px'}} onClick={() => navigate("/Admin/addnotice")}>
+                                    <NoteAddIcon sx={{marginRight: '5px'}}/>
+                                    Add New Notice
+                                </Button>
+                                <Button variant="contained" color="error"
+                                        //  onClick={() => deleteHandler(adminID, "Sclasses")}
+                                    >
+                                    <DeleteIcon sx={{marginRight: '5px'}}/>
+                                    Delete All Notices
+                                </Button>
                             </Box>
                             
                             {/* ////////////////////////// */}

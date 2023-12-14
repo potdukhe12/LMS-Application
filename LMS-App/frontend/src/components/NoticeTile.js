@@ -11,24 +11,32 @@ const StyledPaper = styled(Paper)`
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  background: linear-gradient(to bottom, #ddd, #fff);  /* Adjust colors as needed */
+  background: linear-gradient(to bottom, #fff, #eee);  /* Adjust colors as needed */
   cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: background 0.5s ease, border-radius 0.3s ease;
 
   &:hover {
-    background: linear-gradient(to bottom, #ddd, #eee);  /* Adjust hover colors as needed */
-    border-radius: 40px;
-    transition: background 0.5s ease, border-radius 0.3s ease;
+    background: linear-gradient(to bottom, #eee, #ddd);  /* Adjust hover colors as needed */
+    border-radius: 12px;
   }
 `;
 
-const NoticeTile = ({ title, details, date }) => {
+const NoticeTile = ({ title, details, date, ButtonHaver }) => {
   return (
     <Grid item xs={6} md={4} lg={3}>
-        <StyledPaper>
-            <Typography variant="h6">{title}</Typography>
-            <Typography>{details}</Typography>
-            <Typography>{date}</Typography>
-        </StyledPaper>
+      <StyledPaper>
+        <Typography variant="h6">{title}</Typography>
+        <Typography>{details}</Typography>
+        <Typography>{date}</Typography>
+        {ButtonHaver && (
+          <div style={{ marginTop: '8px' }}>
+            {ButtonHaver()}
+          </div>
+        )}
+        {/* <ButtonHaver row={rows} /> */}
+      </StyledPaper>
     </Grid>
   );
 };
