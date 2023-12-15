@@ -1,3 +1,22 @@
-//create react app
+// Start frontend & backend concurrently
 
-npm i axios react-router-dom
+// create node js application in main/master folder
+npm init -y
+
+// install concurrently package
+npm i concurrently
+
+// create frontend & backend scripts in package.json
+
+    "frontend": "cd frontend && npm start",
+    "backend": "cd backend && npm start",
+    "start": "concurrently \"npm run frontend\" \"npm run backend\"",
+    
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+
+    // Note-> Make sure that backend's script is set to "nodemond index"  
+
+// Now start application
+npm start
+or
+npm run dev 
