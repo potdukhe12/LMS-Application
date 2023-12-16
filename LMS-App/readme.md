@@ -1,4 +1,4 @@
-# School Management System
+# Lerning/School Management System
 
 ## Overview
 
