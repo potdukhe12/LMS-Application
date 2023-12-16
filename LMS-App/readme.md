@@ -65,11 +65,11 @@ Follow the steps below to set up and run the School Management System locally.
 
 ### Concurrently (Optional)
     
- Alternatively, you can run both frontend and backend concurrently from the project root:
+Alternatively, you can run both frontend and backend concurrently from the project root:
 
     npm start
-    
- This will use concurrently to run the frontend and backend servers simultaneously.
+
+This will use concurrently to run the frontend and backend servers simultaneously.
 
 
 ## Screenshots
