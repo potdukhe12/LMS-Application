@@ -12,6 +12,7 @@ This School Management System is a web-based application developed using the MER
 - **Attendance Tracking**: Record and monitor student attendance easily.
 - **Gradebook**: Keep track of student grades and academic performance.
 
+
 ## Installation
 
 Follow the steps below to set up and run the School Management System locally.
@@ -38,6 +39,7 @@ Follow the steps below to set up and run the School Management System locally.
 
    The backend server will run at `http://localhost:5000`.
 
+
 ### Frontend
 
 1. Navigate to the `frontend` directory:
@@ -60,28 +62,30 @@ Follow the steps below to set up and run the School Management System locally.
 
    The frontend development server will run at `http://localhost:3000`.
 
+
 ### Concurrently (Optional)
+    
+ Alternatively, you can run both frontend and backend concurrently from the project root:
 
-Alternatively, you can run both frontend and backend concurrently from the project root:
-
-    ```bash
     npm start
-    ```
-This will use concurrently to run the frontend and backend servers concurrently.
+    
+ This will use concurrently to run the frontend and backend servers simultaneously.
+
 
 ## Screenshots
 
 ![Choose](assets/choose.png)
 *Choose your role*
 
-![Admin Home](assets/a_home.png)
-*Admin Home Page*
-
 ![Admin Login](assets/a_login.png)
 *Admin Login Page*
 
 ![Admin Register](assets/a_register.png)
 *Admin Registration Page*
+
+![Admin Home](assets/a_home.png)
+*Admin Home Page*
+
 
 ## Demo
 
@@ -91,38 +95,46 @@ Click the image below to watch a demo of the admin UI:
 
 **Note:** Click the image to play the demo video.
 
+
 ## Configuration
 
 ### Backend Configuration
 
-- **MongoDB Connection:** Make sure to update the MongoDB connection string in `backend/config/db.js` with your own MongoDB URI.
+- **MongoDB Connection:** Make sure to update the MongoDB connection string in `backend/.env` with your own MongoDB URI.
 
 ### Frontend Configuration
 
-- **API Endpoint:** Update the API endpoint in `frontend/src/api/index.js` if your backend is running on a different URL.
+- **API Endpoint:** Update the API endpoint in `frontend/.env` if your backend is running on a different URL.
 
+<!--
 ## Usage
 
 Provide instructions on how to use or interact with your School Management System. Include any specific features, workflows, or functionality users should be aware of.
+
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
 
+
 ## Contributing
 
 Feel free to contribute to this project. Fork the repository, make your changes, and submit a pull request.
 
+
 ## Acknowledgments
 
 Mention any contributors, libraries, or resources you would like to acknowledge.
+-->
 
 ## Contact
 
-- Your Name
-- Your Email
-- Project Link: [Project Repository](https://github.com/yourusername/school-management-system)
+- Saurabh P.
+- potdukhe12@gmail.com
+- Project Link: [Project Repository](https://github.com/potdukhe12/LMS-Application)
 
+
+<!--
 ## Related Projects
 
 List any related projects or repositories that users may find interesting.
@@ -130,3 +142,4 @@ List any related projects or repositories that users may find interesting.
 ---
 
 Adjust the sections and content as needed based on your project's specifics. The sections provided cover additional details, usage instructions, acknowledgments, contact information, and related projects. Modify or remove sections based on your project's requirements.
+-->
