@@ -96,6 +96,7 @@ align-items: center;
 text-align: center;
 background: linear-gradient(to bottom, #02aeae, #b4ffee, #54ffd7, #54ffd7, #54ffd7, #09a7a7);  // Change the background on hover
 cursor: pointer; 
+transition: background 0.5s ease, border-radius 0.3s ease;
 
 &:hover {
     background: linear-gradient(to bottom, #b4ffee, #03ffc5);

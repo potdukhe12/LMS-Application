@@ -46,7 +46,6 @@ import ShowClasses from './classRelated/ShowClasses';
 
 import AccountMenu from '../../components/AccountMenu';
 import Logout from '../Logout';
-// import Calendar from 'react-calendar';
 import CalendarComponent from './Calender';
 
 const AdminDashboard = () => {
@@ -54,14 +53,7 @@ const AdminDashboard = () => {
     const { currentUser } = useSelector((state) => state.user);
 
     const [open, setOpen] = useState(window.innerWidth >= 600);
-    // to check if application is opened in mobile devices
-
-    // const [selectedDate, setSelectedDate] = useState(new Date()); // State to track selected date
-
-    // const handleDateChange = (date) => {
-    //     setSelectedDate(date);
-    // };
-
+    
     const toggleDrawer = () => {
         setOpen(!open);
     };
@@ -70,10 +62,9 @@ const AdminDashboard = () => {
         <>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar open={open} position='absolute' sx={{
-                        background: 'linear-gradient(to right, #54ffd7, #a0ffe9, #09a7a7)',
-                        // height: '55px'
-                    }}>
+                <AppBar position='fixed' open={open} sx={{
+                    background: 'linear-gradient(to right, #54ffd7, #a0ffe9, #09a7a7)',
+                }}>
                     <Toolbar sx={{ pr: '24px' }}>
                         <IconButton
                             edge="start"
@@ -130,10 +121,15 @@ const AdminDashboard = () => {
                     </List>
                 </Drawer>
                 <Box component="main" sx={styles.boxStyled}>
-                    <Box sx={{                
+                    <Box sx={{ 
+                        marginLeft: open ? '240px' : '75px',             
                         '@media (max-width: 600px)': {
                             display: open ? 'none' : 'block',
+                            marginLeft: open ? '240px' : '18px',
+                            // marginLeft: '0px', 
                         },
+                        transition: 'margin-left 0.3s ease',
+                        // position: 'relative',
                     }}>
                         <Toolbar />
                         <Routes>
@@ -198,27 +194,26 @@ const styles = {
                 ? theme.palette.white
                 : theme.palette.grey[900],
         flexGrow: 1,
-        // height: '85vh',
         overflow: 'auto',
         margin: '50px 50px 0px 50px',
         '@media (max-width: 600px)': {
             margin: '25px 10px 0px 10px',
         }, 
     },
-    sideBoxStyled: {
-        backgroundColor: (theme) =>
-            theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-        flexGrow: 1,
-        // height: '100vh',
-        padding: '4px',
-        overflow: 'auto',
-        marginTop: '10px',
-        '@media (max-width: 600px)': {
-            display: 'none', // Hide the box on screens with a width of 600px or less
-        },
-    },
+    // sideBoxStyled: {
+    //     backgroundColor: (theme) =>
+    //         theme.palette.mode === 'light'
+    //             ? theme.palette.grey[100]
+    //             : theme.palette.grey[900],
+    //     flexGrow: 1,
+    //     // height: '100vh',
+    //     padding: '4px',
+    //     overflow: 'auto',
+    //     marginTop: '10px',
+    //     '@media (max-width: 600px)': {
+    //         display: 'none', // Hide the box on screens with a width of 600px or less
+    //     },
+    // },
     toolBarStyled: {
         display: 'flex',
         alignItems: 'center',
@@ -232,6 +227,7 @@ const styles = {
         display: 'flex',
         '@media (max-width: 600px)': {
             display: 'none',
+            zIndex: 0, // Add this line to set zIndex to 0 when the drawer is closed
         },
     },
 }

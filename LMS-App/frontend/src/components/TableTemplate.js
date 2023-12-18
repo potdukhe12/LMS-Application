@@ -8,7 +8,7 @@ const TableTemplate = ({ buttonHaver: ButtonHaver, columns, rows }) => {
     return (
         <>
             <TableContainer sx={{ borderRadius: '20px', border: '1px solid #000' }}>
-                <Table stickyHeader aria-label="sticky table">
+                <Table aria-label="sticky table">
                     <TableHead>
                         <StyledTableRow>
                             <StyledTableCell align="center" sx={{ minWidth: '20px' }}>

@@ -92,7 +92,7 @@ const ShowSubjects = () => {
                             </GreenButton>
                         </Box>
                         :
-                        <Box sx={{ width: '100%', height: '75vh', backgroundColor: 'white', overflow: 'hidden' }}>
+                        <Box sx={{ width: '100%', overflow: 'hidden' }}>
                             {Array.isArray(subjectsList) && subjectsList.length > 0 &&
                                 <TableTemplate buttonHaver={SubjectsButtonHaver} columns={subjectColumns} rows={subjectRows} />
                             }

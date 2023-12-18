@@ -51,7 +51,7 @@ export const AppBar = styled(MuiAppBar, {
 export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         '& .MuiDrawer-paper': {
-            position: 'relative',
+            // position: 'relative',
             whiteSpace: 'nowrap',
             width: drawerWidth,
             // backgroundColor: '#4db6',

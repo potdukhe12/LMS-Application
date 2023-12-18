@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllNotices } from '../redux/noticeRelated/noticeHandle';
-import NoticeTile from './NoticeTile';
+import NoticeTile2 from './NoticeTile2';
 import { Box } from '@mui/material';
 
 const SeeNotice = () => {
@@ -22,8 +22,14 @@ const SeeNotice = () => {
     console.log(error);
   }
 
+  // Filter notices to exclude expired ones and sort by date
+  const filteredNotices = noticesList
+    .filter(notice => new Date(notice.date) >= new Date().setHours(0, 0, 0, 0)) // Filter from the current date onwards
+    .sort((a, b) => new Date(a.date) - new Date(b.date))
+    .slice(0, 6);
+
   return (
-    <div style={{ marginTop: '20px', display: 'flex', flexWrap: 'wrap' }}>
+    <div style={{ marginTop: '20px', marginBottom: '100px', display: 'flex', flexWrap: 'wrap' }}>
       {loading ? (
         <div style={{ fontSize: '20px' }}>Loading...</div>
       ) : response ? (
@@ -41,14 +47,17 @@ const SeeNotice = () => {
           >
             Notices & Events
           </Box>
-          {Array.isArray(noticesList) && noticesList.length > 0 && (
+          {Array.isArray(filteredNotices) && filteredNotices.length > 0 && (
             <>
-              {noticesList.map((notice) => (
-                <NoticeTile
-                key={notice._id}
-                title={notice.title}
-                details={notice.details}
-                date={new Date(notice.date).toISOString().substring(0, 10)}
+              {filteredNotices.map(notice => (
+                <NoticeTile2
+                  key={notice._id}
+                  columns={[
+                    { id: 'title' },
+                    { id: 'details' },
+                    { id: 'date' },
+                  ]}
+                  rows={[notice]}
                 />
               ))}
             </>
